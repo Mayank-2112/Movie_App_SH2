@@ -1,17 +1,71 @@
 /* Register.css */
-.register-container {
-  width: 300px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap'); */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-form {
+.register-container {
+  width: 100%;
+  height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  background: #000;
+}
+
+.card{
+  width: 1200px;
+  min-height: 600px;
+  color: #fff;
+  display: flex;
+}
+
+.box {
+  flex: 1; /* Make both boxes take equal width */
+  padding: 20px;
+  border: 1px solid #333;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  border: 2px solid green;
+}
+
+.right {
+  padding: 0;
+  border: 2px solid red;  
+  width: 600px;
+  height: 600px;
+  overflow: hidden; 
+  position: relative;
+}
+
+.right img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+}
+
+.login-prompt{
+  width: 280px;
+  height: 50px;
+  position: absolute;
+  background: #000;
+   
+}
+/* form {
+  display: flex;
+  flex: 1;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
@@ -20,23 +74,36 @@ input {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  
 }
 
 button {
-  padding: 10px 15px;
+  width: 150px;
+  padding: 10px 16px;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
+  margin-top: 10px;
+  border-radius: 18px;
+  background-color: #df040f;
   color: #fff;
   cursor: pointer;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  border: 2.5px solid #df040f;
+}
+
+form p{
+  margin: 20px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  color: #df040f;
+  background-color: #fff;
 }
 
 .error {
   color: red;
   margin-bottom: 10px;
-}
+} */

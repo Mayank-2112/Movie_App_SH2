@@ -11,6 +11,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
+      <Register/>
     </Router>
   );
 }
