@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar onSearch={handleSearch} />
+        {/* <NavBar onSearch={handleSearch} /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
