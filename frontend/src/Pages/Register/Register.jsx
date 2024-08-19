@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Register.css"; // Import the CSS file
 import { Link } from "react-router-dom";
 
 function Register() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  // });
   // const [error, setError] = useState("");
 
   // const handleChange = (e) => {
@@ -36,22 +36,45 @@ function Register() {
   //   .then(response => response.json())
   //   .then(json => setMovieList(json.results));
   // }
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    "Carousel/Elementals.png",
+    "Carousel/DM4.jpeg",
+    "Carousel/KPA.jpeg",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change image every 3 seconds
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, [images.length]);
+
   return (
-    <div className="register-container">
+    <div className="video-container">
+      <video autoPlay muted loop className="background-video">
+        <source src="bg-video/bg-vedio.mp4" type="video/mp4" />
+      </video>
       <div className="card">
-        <div className="box left">
-          <div className="register-details"></div>
-        </div>
-        <div className="box right">
-          <img src="public/banner/KPA.jpeg" />
-          <div className="login-prompt">
-            <p>
-              Already a member?
-            </p>
-            <button>Login</button>
-          </div>
-        </div>
+      {images.map((src, index) => (
+        <img
+          key={index}
+          src={src}
+          alt={`Carousel ${index}`}
+          className={currentImageIndex === index ? "active" : "inactive"}
+        />
+      ))}
+      <div className="login-prompt">
+        <p id="login">Login</p>
+        <input type="text" placeholder="username/email" />
+        <input type="password" placeholder="password" />
+        <p className="last-child">Not a member?</p>
+        <button>Register</button>
       </div>
+    </div>
     </div>
   );
 }
