@@ -58,8 +58,14 @@
   height: 50px;
   position: absolute;
   background: #000;
+  background: rgba(161, 159, 159, 0.562);
+  color:white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.993) 0px 5px 15px;
    
 }
+
+
 /* form {
   display: flex;
   flex: 1;
