@@ -15,7 +15,6 @@
   justify-content: center;
   overflow: hidden;
   background: #272626;
-  /* background-image: url("banner/KPA.jpeg"); */
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.993) 0px 5px 15px;
   position: relative;
@@ -32,7 +31,7 @@
   /* z-index: -1; */
   transform: translate(-50%, -50%);
   object-fit: cover;
-  filter: brightness(15%); /* Adjust brightness if needed */
+  filter: brightness(15%); 
 }
 
 .card {
@@ -47,6 +46,7 @@
   border: 0;
   outline: 0;
   width: 600px;
+  background-size: contain;
   /* border: 2px solid red; */
   overflow: hidden;
   position: relative; 

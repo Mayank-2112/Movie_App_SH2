@@ -40,17 +40,19 @@ function Register() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
-    "Carousel/Elementals.png",
+    "Carousel/DandW.jpg",
     "Carousel/DM4.jpeg",
+    "Carousel/Elementals.png",
+    "Carousel/FuriosaMadMAx.jpg",
     "Carousel/KPA.jpeg",
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 3 seconds
+    }, 5000); 
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
+    return () => clearInterval(interval);
   }, [images.length]);
 
   return (
