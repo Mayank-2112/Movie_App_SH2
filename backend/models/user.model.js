@@ -18,14 +18,8 @@ const userSchema = new mongoose.Schema({
     },
     confirmPassword:{
         type: String,
-        required: true,
+        required: false,
         unique: false,
-    },
-    mobile:{
-        type: Number,
-        required:false,
-        unique: true,
-        default: null  
     },
     isAdmin:{
         type: Boolean,
