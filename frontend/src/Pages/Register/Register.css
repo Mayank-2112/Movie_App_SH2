@@ -1,17 +1,154 @@
 /* Register.css */
-.register-container {
-  width: 300px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-form {
+.video-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #272626;
+  /* background-image: url("banner/KPA.jpeg"); */
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.993) 0px 5px 15px;
+  position: relative;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  /* z-index: -1; */
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(15%); /* Adjust brightness if needed */
+}
+
+.card {
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  width: 600px;
+  /* border: 2px solid red; */
+  overflow: hidden;
+  position: relative; 
+  /* position: relative; */
+}
+
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+  position:absolute;
+  filter: brightness(50%);
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.card img.active {
+  opacity: 1; 
+}
+
+
+.login-prompt{
+  width: 350px;
+  height: 350px;
   display: flex;
   flex-direction: column;
+  font-family: 'Poetsen One';
+  letter-spacing: 1px;
+  position: absolute;
+  /* background: rgba(161, 159, 159, 0.562); */
+  background: #0808088f;
+  color:white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.993) 0px 5px 15px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#login{
+  text-align: left;
+  position: absolute;
+  top: 20%;
+  left:22%
+}
+
+.login-prompt input{
+  width: 200px;
+  height: 30px;
+  outline: 0;
+  background: #fff;
+  color: #000;
+}
+
+.login-prompt input:focus{
+  border: none;
+  border-bottom: solid yellow ;
+}
+
+.login-prompt input::placeholder{
+  color: #000;
+}
+
+.last-child{
+  display: flex;
+  position: absolute;
+  top:70%;
+}
+
+.login-prompt button{
+  height: 19px;
+  width: 90px;
+  margin: 20px;
+  display: flex;
+  position: absolute;
+  top: 74%;
+  color: #000;
+  background: #f1ee39;
+  border: 2px solid #f1ee39;
+  border-radius: 12px;
+  font-family: 'Poetsen One',sans-serif;
+  letter-spacing: 1px;
+  /* padding:  2px 0 7.5%; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.login-prompt button:hover{
+  color: #df040f;
+  background: #fff;
+}
+
+
+
+/* form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
@@ -20,23 +157,36 @@ input {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  
 }
 
 button {
-  padding: 10px 15px;
+  width: 150px;
+  padding: 10px 16px;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
+  margin-top: 10px;
+  border-radius: 18px;
+  background-color: #df040f;
   color: #fff;
   cursor: pointer;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  border: 2.5px solid #df040f;
+}
+
+form p{
+  margin: 20px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  color: #df040f;
+  background-color: #fff;
 }
 
 .error {
   color: red;
   margin-bottom: 10px;
-}
+} */
