@@ -1,24 +1,42 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import Link for navigation
-import "./Register.css";
+import "./Login.css"; // Import the CSS file
+import { Link } from "react-router-dom";
 
-function Register() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+function Login() {
+  // const [formData, setFormData] = useState({
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  // });
   // const [error, setError] = useState("");
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
-  //   // Dummy login logic
-  //   if (email === "user@example.com" && password === "password123") {
-  //     alert("Login successful!");
+
+  //   // Simple validation
+  //   if (formData.password !== formData.confirmPassword) {
+  //     setError("Passwords do not match.");
   //   } else {
-  //     setError("Invalid email or password.");
+  //     setError("");
+  //     alert("Registration successful!");
+  //     // Handle registration logic here, e.g., call an API
   //   }
   // };
-  const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+
+  // const [movieList, setMovieList] = useState([])
+
+  // const getMovie = () => {
+  //   fetch('https://image.tmdb.org/t/p/w500//cyecB7godJ6kNHGONFjUyVN9OX5.jpg')
+  //   .then(response => response.json())
+  //   .then(json => setMovieList(json.results));
+  // }
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
@@ -36,32 +54,7 @@ function Register() {
 
     return () => clearInterval(interval);
   }, [images.length]);
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.email || !formData.password) {
-      return seterror("Please fill all the fields!!");
-    }
-    try {
-      setError(null);
-      const res = await fetch("/backend/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        setError(data.message);
-      }
-      if (res.ok) {
-        navigate("/");
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+
   return (
     <div className="video-container">
       <video autoPlay muted loop className="background-video">
@@ -78,16 +71,16 @@ function Register() {
         ))}
         <div className="login-prompt">
           <div id="login">
-            <p>Register</p>
+            <p>Login</p>
           </div>
           <div className="buttons">
-            <input type="text" placeholder=" Full name" />
             <input type="email" placeholder=" Email" />
             <input type="password" placeholder=" Password" />
-            <input type="password" placeholder=" Confirm password" />
           </div>
-          <div id="login-btn">
-            <button className="btn">Register</button>
+          <div className="login-btn">
+            <button className="btn" style={{ backgroundColor: "#FFC107" }}>
+              Login
+            </button>
             <h6>
               <center>OR</center>
             </h6>
@@ -118,15 +111,15 @@ function Register() {
                   d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
                 ></path>
               </svg>
-              <span style={{ color: "white" }}>Sign Up with Google</span>
+              <span style={{ color: "white" }}>Sign In with Google</span>
             </button>
           </div>
-          <div className="last-child">
+          <div id="last-child">
             <p>
-              Already a member{" "}
-              <Link to="/login">
+              Not a member?{" "}
+              <Link to="/register">
                 <span style={{ color: "#f1ee39", textDecoration: "none" }}>
-                  Login
+                  Register
                 </span>
               </Link>
             </p>
@@ -137,4 +130,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;

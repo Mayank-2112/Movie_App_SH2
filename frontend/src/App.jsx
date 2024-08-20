@@ -1,6 +1,6 @@
 // import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./Pages/LoginPage/Login";
+import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./Pages/Home/Home";
@@ -19,7 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
-      <Register/>
+      {/* <Register/> */}
     </Router>
   );
 }
