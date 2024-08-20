@@ -72,8 +72,8 @@
 .login-prompt{
   width: 90%;
   max-width: 350px;
-  top: 8.5%;
-  height: 500px;
+  /* top: 8.5%; */
+  height: 450px;
   margin: 10%;
   display: flex;
   flex-direction: column;
@@ -101,6 +101,7 @@
   /* border: 2px solid; */
   overflow-wrap: break-word;
 }
+
 
 .buttons{
   /* border: 2px solid green; */
@@ -143,28 +144,50 @@ input::placeholder{
   position: absolute;
   top: 70%;
   z-index: 1;
+  font-size: 12px;
+  margin-top: 10px;
   overflow-wrap: break-word;
+}
+.last-child p Link{
+  color: #f1ee39;
+  text-decoration: none;
 }
 
 #login-btn{
-  width: 150px;
+  width: 90%;
+  max-width: 200px;
   height: 40px;
   /* border: 2px solid white; */
-  justify-content: space-between ;
+  justify-content: center ;
   position: absolute;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   top: 55%;
 }
-
+.google{
+  display: flex;
+  /* justify-content:space-around; */
+  gap: 5px;
+  align-items: center;
+  /* width: 500px; */
+  background: #57555598;
+  height: 30px;
+}
+.google span{
+  font-size: 12px;
+}
 .google-icon{
-  background: #dfdadaea;
+  background:transparent;
   border-radius: 5px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  padding-top: 8px;
 }
 
-#login-btn button{
-  width: 90%;
-  max-width: 90px;  
+#login-btn .btn{
+  width: 100%;
+  max-width: 200px;  
   height: 30px;
   top: 55%;
   display: flex;
