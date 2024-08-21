@@ -1,41 +1,15 @@
 import { useState, useEffect } from "react";
 import "./Login.css"; // Import the CSS file
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
+import { app } from '../../firebase'
+
 
 function Login() {
-  // const [formData, setFormData] = useState({
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  //   confirmPassword: "",
-  // });
-  // const [error, setError] = useState("");
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   // Simple validation
-  //   if (formData.password !== formData.confirmPassword) {
-  //     setError("Passwords do not match.");
-  //   } else {
-  //     setError("");
-  //     alert("Registration successful!");
-  //     // Handle registration logic here, e.g., call an API
-  //   }
-  // };
-
-  // const [movieList, setMovieList] = useState([])
-
-  // const getMovie = () => {
-  //   fetch('https://image.tmdb.org/t/p/w500//cyecB7godJ6kNHGONFjUyVN9OX5.jpg')
-  //   .then(response => response.json())
-  //   .then(json => setMovieList(json.results));
-  // }
+  const [formData, setFormData] = useState({});
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const auth = getAuth(app);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -54,6 +28,59 @@ function Login() {
 
     return () => clearInterval(interval);
   }, [images.length]);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.email || !formData.password) {
+      return setError("Please fill all the fields!!");
+    };
+    try {
+      setError(null);
+      const res = await fetch("/backend/auth/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        setError(data.message);
+      }
+      if (res.ok) {
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+  const handleGoogleClick = async(e)=>{
+    const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({prompt: 'select_account'});
+        try {
+            const resultsFromGoogle = await signInWithPopup(auth, provider);
+            console.log(resultsFromGoogle);
+            const res = await fetch('/backend/auth/google',{
+                method: 'POST',
+                headers: {'Content-Type': 'Application/json'},
+                body: JSON.stringify({
+                    name: resultsFromGoogle.user.displayName,
+                    email: resultsFromGoogle.user.email,
+                    googlePhotoURL: resultsFromGoogle.user.photoURL,
+                }),
+            });
+            const data = await res.json()
+            if(res.ok){
+                navigate('/');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+  
+  
 
   return (
     <div className="video-container">
@@ -74,17 +101,17 @@ function Login() {
             <p>Login</p>
           </div>
           <div className="buttons">
-            <input type="email" placeholder=" Email" />
-            <input type="password" placeholder=" Password" />
+            <input type="email" placeholder=" Email" id="email" onChange={handleChange}/>
+            <input type="password" placeholder=" Password" id='password' onChange={handleChange}/>
           </div>
           <div className="login-btn">
-            <button className="btn" style={{ backgroundColor: "#FFC107" }}>
+            <button className="btn" style={{ backgroundColor: "#FFC107" }} onClick={handleSubmit}>
               Login
             </button>
             <h6>
               <center>OR</center>
             </h6>
-            <button className="google">
+            <button className="google" onClick={handleGoogleClick}>
               <svg
                 className="google-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,6 +151,7 @@ function Login() {
               </Link>
             </p>
           </div>
+          {error && <p id="error">{error}</p>}
         </div>
       </div>
     </div>

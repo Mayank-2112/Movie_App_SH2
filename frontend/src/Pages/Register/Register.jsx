@@ -1,24 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import Link for navigation
 import "./Register.css";
+import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
+
+import { app }  from '../../firebase';
 
 function Register() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Dummy login logic
-  //   if (email === "user@example.com" && password === "password123") {
-  //     alert("Login successful!");
-  //   } else {
-  //     setError("Invalid email or password.");
-  //   }
-  // };
+  
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const auth = getAuth(app);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
@@ -36,17 +28,22 @@ function Register() {
 
     return () => clearInterval(interval);
   }, [images.length]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.email || !formData.password) {
-      return seterror("Please fill all the fields!!");
-    }
+    if ( !formData.fullname || !formData.email || !formData.password || !formData.confirmPassword) {
+      return setError("Please fill all the fields!!");
+    };
+    if (formData.password !== formData.confirmPassword){
+      return setError('Passwords do not match. Retry!!');
+    };
     try {
       setError(null);
-      const res = await fetch("/backend/auth/signin", {
+      const res = await fetch("/backend/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -56,12 +53,37 @@ function Register() {
         setError(data.message);
       }
       if (res.ok) {
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const handleGoogleClick = async(e)=>{
+    const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({prompt: 'select_account'});
+        try {
+            const resultsFromGoogle = await signInWithPopup(auth, provider);
+            console.log(resultsFromGoogle);
+            const res = await fetch('/backend/auth/google',{
+                method: 'POST',
+                headers: {'Content-Type': 'Application/json'},
+                body: JSON.stringify({
+                    name: resultsFromGoogle.user.displayName,
+                    email: resultsFromGoogle.user.email,
+                    googlePhotoURL: resultsFromGoogle.user.photoURL,
+                }),
+            });
+            const data = await res.json()
+            if(res.ok){
+                navigate('/');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+  
   return (
     <div className="video-container">
       <video autoPlay muted loop className="background-video">
@@ -81,17 +103,17 @@ function Register() {
             <p>Register</p>
           </div>
           <div className="buttons">
-            <input type="text" placeholder=" Full name" />
-            <input type="email" placeholder=" Email" />
-            <input type="password" placeholder=" Password" />
-            <input type="password" placeholder=" Confirm password" />
+            <input type="text" placeholder=" Full name" id="fullname" onChange={handleChange} />
+            <input type="email" placeholder=" Email" id="email" onChange={handleChange} />
+            <input type="password" placeholder=" Password" id="password" onChange={handleChange} />
+            <input type="password" placeholder=" Confirm password" id="confirmPassword" onChange={handleChange}/>
           </div>
           <div id="login-btn">
-            <button className="btn">Register</button>
+            <button className="btn" onClick={handleSubmit}>Register</button>
             <h6>
               <center>OR</center>
             </h6>
-            <button className="google">
+            <button className="google" onClick={handleGoogleClick}>
               <svg
                 className="google-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +153,9 @@ function Register() {
               </Link>
             </p>
           </div>
+          {
+            error && <p className="error">{error}</p>
+          }
         </div>
       </div>
     </div>
