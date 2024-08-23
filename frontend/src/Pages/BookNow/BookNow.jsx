@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./BookNow.css";
 import opencage from 'opencage-api-client';
+import TheaterDropdown from "../../components/TheaterDropdown/TheaterDropdown";
 
 const BookNow = () => {
   const [city, setCity] = useState('');
   const [location, setLocation]= useState({
     lat:'',lng:''
   });
-  const [theater, setTheater] = useState([]);
-  const [activeTheater, setActiveTheater] = useState(null);
+  
   const [activeTime, setActiveTime] = useState(null);
   const [showTimmings, setShowTimmings] = useState([]);
 
@@ -42,47 +42,6 @@ const BookNow = () => {
     }
     
   };
-  const currentDate = new Date();
-
-  const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-  const day = String(currentDate.getDate()).padStart(2, '0');
-  const hours = String(currentDate.getHours()).padStart(2, '0');
-  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-  const seconds = String(currentDate.getSeconds()).padStart(2, '0');
-
-  const filmId = '364605';
-  
-    const getTheaters = async (lat,lng)=>{
-      try{
-        const res = await fetch(`https://api-gate2.movieglu.com/cinemasNearby/?n=30`,{
-            method: 'GET',
-            headers:{
-              'client' : 'MOVI_227',
-              'x-api-key': import.meta.env.VITE_X_API_KEY,
-              'authorization': import.meta.env.VITE_AUTHORIZATION,
-              'territory': 'IN',
-              'api-version': 'v200',
-              'geolocation':`${lat};${lng}`,
-              'device-datetime': `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`
-            },
-
-        });
-        const data = await res.json();
-        if (res.ok){
-          console.log(data.cinemas);
-          const filteredTheater = data.cinemas.filter(theat => theat.city === city);
-          setTheater(filteredTheater);
-        }
-        else{
-          console.error('HTTP error:', res.status, res.statusText);
-          console.error('Response body:', data);
-        }
-      }catch(error){
-        console.log(error.message);
-        
-      }
-    };
     
 
     const handleactiveTheater = (idx) => {
@@ -108,7 +67,7 @@ const BookNow = () => {
         <input type="text" placeholder=" city names" id="city" value={city} onChange={handleButtonClick} />
         <button type="submit">Search</button>
       </form>
-      
+      <TheaterDropdown lat={location.lat} lng={location.lng} city={city}/>
 
 
       <footer>
@@ -121,19 +80,7 @@ const BookNow = () => {
         {location.lng}
       </p>
       <div>
-      {theater && (
-          theater.map((theater, idx) => (
-            <button key={idx}
-            onClick={() => handleactiveTheater(idx)}
-            style={{
-              backgroundColor: activeTheater === idx ? "blue" : "gray",
-              color: "white",
-              margin: "5px",
-            }}
-            >
-              {theater.cinema_name},{theater.address}</button>
-          ))
-        )}
+      
       </div>
       <div>
       {showTimmings && (
