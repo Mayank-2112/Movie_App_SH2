@@ -62,6 +62,12 @@ function Register() {
       setError(error.message);
     }
   };
+
+  const [toggle, setToggle] = useState(1);
+
+  const handleToggle = (e) => {
+    setToggle(e);
+  }
   return (
     <div className="video-container">
       <video autoPlay muted loop className="background-video">
@@ -77,7 +83,8 @@ function Register() {
           />
         ))}
         <div className="login-prompt">
-          <div id="login">
+          {toggle == true && (
+            <><div id="login">
             <p>Register</p>
           </div>
           <div className="buttons">
@@ -86,6 +93,7 @@ function Register() {
             <input type="password" placeholder=" Password" />
             <input type="password" placeholder=" Confirm password" />
           </div>
+          
           <div id="login-btn">
             <button className="btn">Register</button>
             <h6>
@@ -121,14 +129,13 @@ function Register() {
               <span style={{ color: "white" }}>Sign Up with Google</span>
             </button>
           </div>
+          </>)}
           <div className="last-child">
             <p>
               Already a member{" "}
-              <Link to="/login">
-                <span style={{ color: "#f1ee39", textDecoration: "none" }}>
+                <span style={{ color: "#f1ee39", textDecoration: "none" }} onClick={() => handleToggle(!toggle)}>
                   Login
                 </span>
-              </Link>
             </p>
           </div>
         </div>
