@@ -88,6 +88,10 @@
   align-items: center;
   justify-content: center;
 }
+.login-prompt #error{
+  color: #f1ee39;
+  margin-top: 90%;
+}
 
 #login {
   position: absolute;
