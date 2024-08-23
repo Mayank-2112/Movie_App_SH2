@@ -60,17 +60,14 @@ const TheaterDropdown = ({ lat, lng, city }) => {
 
     setActiveTheater(selectedTheaterId);
 
-    if (
-      selectedTheater &&
-      selectedTheater.showings &&
-      selectedTheater.showings.Standard
-    ) {
-      setShowTimmings(selectedTheater.showings.Standard.times);
-    } else {
-      setShowTimmings([]);
-      console.log("No showings available for the selected theater");
-    }
+    // if (selectedTheater && selectedTheater.showings && selectedTheater.showings.Standard) {
+    //   setShowTimmings(selectedTheater.showings.Standard.times);
+    // } else {
+    //   setShowTimmings([]);
+    //   console.log('No showings available for the selected theater');
+    // }
   };
+  console.log(activeTheater);
 
   return (
     <>
