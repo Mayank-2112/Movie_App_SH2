@@ -10,8 +10,6 @@ const BookNow = () => {
     lat:'',lng:''
   });
   
-  const [activeTime, setActiveTime] = useState(null);
-  const [showTimmings, setShowTimmings] = useState([]);
 
   const handleButtonClick = (e) => {
     setCity(e.target.value);
@@ -44,17 +42,6 @@ const BookNow = () => {
   };
     
 
-    const handleactiveTheater = (idx) => {
-      // console.log(key, buttonValues.key);
-      setActiveTheater(idx);
-      const selectedTheater = theater[idx];
-    if (selectedTheater.showings && selectedTheater.showings.Standard) {
-      setShowTimmings(selectedTheater.showings.Standard.times);
-    } else {
-      setShowTimmings([]);
-      console.log("No showings available for the selected theater");
-    }
-    };
     const handleTimmingButton = (key)=>{
         setActiveTime(key);
 
@@ -79,24 +66,7 @@ const BookNow = () => {
         {location.lat}
         {location.lng}
       </p>
-      <div>
       
-      </div>
-      <div>
-      {showTimmings && (
-          showTimmings.map((timming, idx) => (
-            <button key={idx}
-            onClick={() => handleTimmingButton(idx)}
-            style={{
-              backgroundColor: activeTime === idx ? "blue" : "gray",
-              color: "white",
-              margin: "5px",
-            }}
-            >
-              {timming.start_time}</button>
-          ))
-        )}
-      </div>
     </div>
   );
 };

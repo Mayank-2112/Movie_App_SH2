@@ -26,7 +26,7 @@ const TheaterDropdown = ({lat,lng,city}) => {
         const res = await fetch(`https://api-gate2.movieglu.com/cinemasNearby/?n=30`,{
             method: 'GET',
             headers:{
-              'client' : 'MOVI_227',
+              'client' : 'MOVI_225',
               'x-api-key': import.meta.env.VITE_X_API_KEY,
               'authorization': import.meta.env.VITE_AUTHORIZATION,
               'territory': 'IN',
@@ -57,13 +57,15 @@ const TheaterDropdown = ({lat,lng,city}) => {
         
         setActiveTheater(selectedTheaterId);
     
-        if (selectedTheater && selectedTheater.showings && selectedTheater.showings.Standard) {
-          setShowTimmings(selectedTheater.showings.Standard.times);
-        } else {
-          setShowTimmings([]);
-          console.log('No showings available for the selected theater');
-        }
+        // if (selectedTheater && selectedTheater.showings && selectedTheater.showings.Standard) {
+        //   setShowTimmings(selectedTheater.showings.Standard.times);
+        // } else {
+        //   setShowTimmings([]);
+        //   console.log('No showings available for the selected theater');
+        // }
       };
+      console.log(activeTheater);
+      
     
   return (
     <>

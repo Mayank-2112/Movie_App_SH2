@@ -10,6 +10,11 @@ export default defineConfig({
           secure: false,
       }
     },
+    // '/api': {
+    //     target: 'https://api-gate2.movieglu.com',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //   },
   },
   plugins: [react()],
 })
