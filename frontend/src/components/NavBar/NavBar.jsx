@@ -1,37 +1,97 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
+import Profile from "../Profile/Profile";
+import { Link } from "react-router-dom";
+import './NavBar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({ onSearch }) => {
-  const hideNavbarPages = ["/login", "/register"];
 
-  if (hideNavbarPages.includes(location.pathname)) {
-    return null; // Hide Navbar on these pages
-  }
+// function Navbar() {
+//   const [click, setClick] = useState(true);
+//   const [button, setButton] = useState(true);
+//   const [navbar, setNavbar] = useState(false);
+
+//   // const handleClick = () => setClick(!click);
+//   const closeMobileMenu = () => setClick(false);
+
+//   return (
+//     <>
+//     <nav className="navbar">
+//       <div className="site-title">
+//         <Link to='/' >FlickScribe</Link>
+//         </div>
+//         {/* <div className="menu-icon" onClick={handleClick}></div> */}
+//         {/* <ul className={click ? "nav-menu active" : "nav-menu"}> */}
+//         {/* <ul className="nav-menu"> */}
+        
+//           <div className="nav-item i1">
+//             <Link to='/' onClick={closeMobileMenu}>
+//             Movies
+//             </Link>
+//           </div>
+          
+//           {/* <li className="nav-item">
+//             <Link to='/' className="nav-links" onClick={closeMobileMenu}>
+//             Contact
+//             </Link>
+//           </li> */}
+
+//           <div className="nav-item i2">
+//             <Link to='/'  onClick={closeMobileMenu}>
+//             About_Us
+//             </Link>
+//           </div>
+
+//           <div className="nav-item i3">
+//             <Link to='/' onClick={closeMobileMenu}>
+//             Support
+//             </Link>
+//           </div>
+          
+//           <div className="search">
+//             <Search />
+//           </div>
+
+//           <div className="profile">
+//             <Profile />
+//           </div>
+          
+//         {/* </ul> */}
+//     </nav>
+//     </>
+//   );
+// }
+
+// export default Navbar;
+
+function Navbar() {
   return (
-    <nav style={styles.navbar}>
-      <div style={styles.logo}>MyApp</div>
-      <Search onSearch={onSearch} />
-      <div style={styles.menu}>Menu</div>
+    <nav>
+      <input type="checkbox" id="check" />
+      <label htmlFor="check" className="checkbtn">
+      <FontAwesomeIcon icon={faBars} />
+      </label>
+      <label className="logo">FlixCribe</label>
+      <ul>
+        <li>
+          <Link to="/">Movies</Link>
+        </li>
+        <li>
+          <Link to="/">Contact</Link>
+        </li>
+        <li>
+          <Link to="/">Support</Link>
+        </li>
+        <li>
+          <Link to="/"><Search /></Link>
+        </li>
+        <li>
+          <Link to="/"><Profile /></Link>
+        </li>
+      </ul>
     </nav>
   );
-};
-
-const styles = {
-  navbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 20px",
-    backgroundColor: "#333",
-    color: "#fff",
-  },
-  logo: {
-    fontSize: "24px",
-    fontWeight: "bold",
-  },
-  menu: {
-    fontSize: "18px",
-  },
-};
+}
 
 export default Navbar;

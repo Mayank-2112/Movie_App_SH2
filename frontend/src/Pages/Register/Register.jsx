@@ -59,31 +59,6 @@ function Register() {
       setError(error.message);
     }
   };
-
-  const handleGoogleClick = async(e)=>{
-    const provider = new GoogleAuthProvider();
-        provider.setCustomParameters({prompt: 'select_account'});
-        try {
-            const resultsFromGoogle = await signInWithPopup(auth, provider);
-            console.log(resultsFromGoogle);
-            const res = await fetch('/backend/auth/google',{
-                method: 'POST',
-                headers: {'Content-Type': 'Application/json'},
-                body: JSON.stringify({
-                    name: resultsFromGoogle.user.displayName,
-                    email: resultsFromGoogle.user.email,
-                    googlePhotoURL: resultsFromGoogle.user.photoURL,
-                }),
-            });
-            const data = await res.json()
-            if(res.ok){
-                navigate('/');
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-  
   return (
     <div className="video-container">
       <video autoPlay muted loop className="background-video">
@@ -99,7 +74,8 @@ function Register() {
           />
         ))}
         <div className="login-prompt">
-          <div id="login">
+          {toggle == true && (
+            <><div id="login">
             <p>Register</p>
           </div>
           <div className="buttons">
@@ -108,6 +84,7 @@ function Register() {
             <input type="password" placeholder=" Password" id="password" onChange={handleChange} />
             <input type="password" placeholder=" Confirm password" id="confirmPassword" onChange={handleChange}/>
           </div>
+          
           <div id="login-btn">
             <button className="btn" onClick={handleSubmit}>Register</button>
             <h6>
@@ -143,14 +120,13 @@ function Register() {
               <span style={{ color: "white" }}>Sign Up with Google</span>
             </button>
           </div>
+          </>)}
           <div className="last-child">
             <p>
               Already a member{" "}
-              <Link to="/login">
-                <span style={{ color: "#f1ee39", textDecoration: "none" }}>
+                <span style={{ color: "#f1ee39", textDecoration: "none" }} onClick={() => handleToggle(!toggle)}>
                   Login
                 </span>
-              </Link>
             </p>
           </div>
           {
