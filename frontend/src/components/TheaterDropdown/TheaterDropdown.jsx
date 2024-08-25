@@ -21,7 +21,7 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const seconds = String(currentDate.getSeconds()).padStart(2, "0");
 
-  const filmId = '365963';
+  const filmId = '364605';
   
     const getTheaters = async (lat,lng)=>{
       try{
