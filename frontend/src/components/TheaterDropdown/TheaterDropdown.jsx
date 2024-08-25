@@ -46,6 +46,7 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
           // .filter(theat => theat.city === city)
           setTheater(filteredTheater);
         }
+<<<<<<< HEAD
         else{
           console.error('HTTP error:', res.status, res.statusText);
           console.error('Response body:', data);
@@ -77,10 +78,55 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
         <option value="">Select a theater</option>
         {theater &&
           theater.map((theater, idx) => (
+=======
+      );
+      const data = await res.json();
+      if (res.ok) {
+        // console.log(data.cinemas);
+        const filteredTheater = data.cinemas.filter(
+          (theat) => theat.city === city
+        );
+        setTheaters(filteredTheater);
+      } else {
+        console.error("HTTP error:", res.status, res.statusText);
+        console.error("Response body:", data);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const handleActiveTheater = (event) => {
+    const selectedTheaterId = event.target.value;
+    const selectedTheater = theaters.find(
+      (theat) => theat.cinema_id === selectedTheaterId
+    );
+
+    setActiveTheater(selectedTheaterId);
+
+    // if (selectedTheater && selectedTheater.showings && selectedTheater.showings.Standard) {
+    //   setShowTimmings(selectedTheater.showings.Standard.times);
+    // } else {
+    //   setShowTimmings([]);
+    //   console.log('No showings available for the selected theaters');
+    // }
+  };
+  console.log(activeTheater);
+  // console.log(theaters);
+
+  return (
+    <>
+      <select id="theaters" onChange={handleActiveTheater}>
+        <option value="">Select a theaters</option>
+        {theaters.map((theater, idx) => {
+          console.log(theater);
+
+          return (
+>>>>>>> c2e8b22 (no changes)
             <option key={idx} value={theater.cinema_id}>
               {theater.cinema_name}, {theater.address}
             </option>
-          ))}
+          );
+        })}
       </select>
       {
         activeTheater && <ShowTimings filmId={filmId} theaterId={activeTheater} date={date} lat={lat} lng={lng}/>
