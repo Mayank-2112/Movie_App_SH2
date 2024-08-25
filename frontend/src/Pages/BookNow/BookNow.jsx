@@ -10,7 +10,28 @@ const BookNow = () => {
     lat: "",
     lng: "",
   });
+  const [activeDay, setActiveDay] = useState(0);
+  const [activeDate, setActiveDate] = useState(null);
 
+  const days = ['SUN','MON','TUE','WED','THR','FRI','SAT'];
+  const weekDates = [];
+  const getWeekDates = () => {
+    const today = new Date(); // Get today's date
+    for (let i = 0; i < 10; i++) {
+      const currentDate = new Date();
+    
+      currentDate.setDate(today.getDate() + i); // Add 'i' days to today
+      const dayName = days[currentDate.getDay()]; // Get the day name
+      const date = String(currentDate.getDate()).padStart(2, '0');
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const year = String(currentDate.getFullYear()).padStart(2, '0');
+      weekDates.push({ day: dayName, date: date, month: month, year: year });
+    }
+
+    return weekDates;
+  };
+  getWeekDates();
+  
   const handleButtonClick = (e) => {
     setCity(e.target.value);
   };
@@ -29,7 +50,6 @@ const BookNow = () => {
           lat: place.geometry.lat,
           lng: place.geometry.lng,
         });
-        // getTheaters(place.geometry.lat, place.geometry.lng);
       } else {
         console.log("Status", data.status.message);
         console.log("total_results", data.total_results);
@@ -42,10 +62,25 @@ const BookNow = () => {
       }
     }
   };
+    
 
+    const handleDateChange = (key)=>{
+        setActiveDay(key);
+        setActiveDate(weekDates[key]);
+
+    }
+    
   return (
     <div className="main">
-      <h1>Book Now</h1>
+      <h1 className="BookNow">Book Now</h1>
+      {weekDates && weekDates.map((item, index) => (
+          <button key={index} onClick={()=>handleDateChange(index)}
+          style={{background : index === activeDay ? 'blue':'grey'}}>
+            {item.day}, {item.date}
+          </button>
+        ))}
+
+
       <form onSubmit={getGeoLocation}>
         <input
           type="text"
@@ -56,7 +91,8 @@ const BookNow = () => {
         />
         <button type="submit">Search</button>
       </form>
-      <TheaterDropdown lat={location.lat} lng={location.lng} city={city} />
+      <TheaterDropdown lat={location.lat} lng={location.lng} city={city} date={activeDate}/>
+      
 
       <footer>
         <Link to="/seating">
@@ -64,10 +100,11 @@ const BookNow = () => {
         </Link>
       </footer>
       <p>
-        {city}
-        {location.lat}
-        {location.lng}
-      </p>
+        {city} -
+        {" "}{location.lat},
+        {" "}{location.lng}
+        <br/>
+      {activeDay && <span>{activeDate.date}</span> } </p>
     </div>
   );
 };

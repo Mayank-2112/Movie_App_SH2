@@ -18,7 +18,7 @@
     "express": "^4.19.2",
     "firebase": "^10.13.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.5.3",
+    "mongoose": "^8.5.4",
     "nodemon": "^3.1.4",
     "opencage-api-client": "^1.0.7"
   }
