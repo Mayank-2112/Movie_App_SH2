@@ -26,7 +26,7 @@
   font-size: 30px;
   text-decoration: none;
   cursor: pointer;
-  color: #e6e342e3;
+  color: #FFFF00;
 }
 
 .navbar-left img{
@@ -46,7 +46,7 @@
 }
 
 .navbar-left ul li:hover{
-  color: #fcf965fd;
+  color: #FFFF00;
 }
 
 .navbar-right{
