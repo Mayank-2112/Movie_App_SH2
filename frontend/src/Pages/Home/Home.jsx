@@ -14,9 +14,10 @@ const Home = () => {
       <div className="hero">
         <img src={KPA} alt="" className="banner-img" />
         <div className="hero-caption">
+          <h3 className="caption-img" > Kingdom of the Planet of Apes</h3>
           <p>Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he&apos;s been taught about the past and make choices that will define a future for apes and humans alike.</p>
           <div className="hero-btns">
-            <button className="btn"><FontAwesomeIcon icon={faPlay} />Play</button>
+            <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
           </div>
         </div>
