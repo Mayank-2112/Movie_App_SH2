@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./BookNow.css";
 import opencage from "opencage-api-client";
 import TheaterDropdown from "../../components/TheaterDropdown/TheaterDropdown";
+import BookNavbar from "../../components/BookNowNavbar/BookNavbar";
 
 const BookNow = () => {
   const [city, setCity] = useState("");
@@ -17,7 +18,7 @@ const BookNow = () => {
   const weekDates = [];
   const getWeekDates = () => {
     const today = new Date(); // Get today's date
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 7; i++) {
       const currentDate = new Date();
     
       currentDate.setDate(today.getDate() + i); // Add 'i' days to today
@@ -72,14 +73,15 @@ const BookNow = () => {
     
   return (
     <div className="main">
-      <h1 className="BookNow">Book Now</h1>
+      <BookNavbar/>
+      <div className="dateBtn">
       {weekDates && weekDates.map((item, index) => (
-          <button key={index} onClick={()=>handleDateChange(index)}
-          style={{background : index === activeDay ? 'blue':'grey'}}>
+          <button className="Btn" key={index} onClick={()=>handleDateChange(index)}
+          style={{background : index === activeDay ? '#f1ee39':'black',color: index === activeDay ? 'black':'#f1ee39'}}>
             {item.day}, {item.date}
           </button>
         ))}
-
+  </div>
 
       <form onSubmit={getGeoLocation}>
         <input
@@ -89,7 +91,7 @@ const BookNow = () => {
           value={city}
           onChange={handleButtonClick}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="Btn">Search</button>
       </form>
       <TheaterDropdown lat={location.lat} lng={location.lng} city={city} date={activeDate}/>
       
