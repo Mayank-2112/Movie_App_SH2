@@ -39,11 +39,11 @@ const TheaterDropdown = ({ lat, lng, city }) => {
       );
       const data = await res.json();
       if (res.ok) {
-        console.log(data.cinemas);
+        // console.log(data.cinemas);
         const filteredTheater = data.cinemas.filter(
           (theat) => theat.city === city
         );
-        setTheater(filteredTheater);
+        setTheaters(filteredTheater);
       } else {
         console.error("HTTP error:", res.status, res.statusText);
         console.error("Response body:", data);
@@ -54,7 +54,7 @@ const TheaterDropdown = ({ lat, lng, city }) => {
   };
   const handleActiveTheater = (event) => {
     const selectedTheaterId = event.target.value;
-    const selectedTheater = theater.find(
+    const selectedTheater = theaters.find(
       (theat) => theat.cinema_id === selectedTheaterId
     );
 
@@ -64,21 +64,25 @@ const TheaterDropdown = ({ lat, lng, city }) => {
     //   setShowTimmings(selectedTheater.showings.Standard.times);
     // } else {
     //   setShowTimmings([]);
-    //   console.log('No showings available for the selected theater');
+    //   console.log('No showings available for the selected theaters');
     // }
   };
   console.log(activeTheater);
+  // console.log(theaters);
 
   return (
     <>
-      <select id="theater" onChange={handleActiveTheater}>
-        <option value="">Select a theater</option>
-        {theater &&
-          theater.map((theater, idx) => (
+      <select id="theaters" onChange={handleActiveTheater}>
+        <option value="">Select a theaters</option>
+        {theaters.map((theater, idx) => {
+          console.log(theater);
+
+          return (
             <option key={idx} value={theater.cinema_id}>
               {theater.cinema_name}, {theater.address}
             </option>
-          ))}
+          );
+        })}
       </select>
     </>
   );
