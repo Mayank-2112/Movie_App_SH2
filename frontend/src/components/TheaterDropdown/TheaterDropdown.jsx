@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { act, useEffect, useState } from 'react'
+import ShowTimings from '../ShowTimings/ShowTimings';
 
-const TheaterDropdown = ({lat,lng,city}) => {
+const TheaterDropdown = ({lat,lng,city,date}) => {
 
     useEffect(() => {
-        if (lat && lng) {
+        if (lat && lng && date) {
           getTheaters(lat, lng);
+          console.log(date);
         }
-      }, [lat, lng]);
-
+      }, [lat, lng, date]);
+    
     const [theater, setTheater] = useState([]);
-    const [activeTheater, setActiveTheater] = useState(false);
+    const [activeTheater, setActiveTheater] = useState(null);
     const currentDate = new Date();
 
   const year = currentDate.getFullYear();
@@ -19,14 +21,14 @@ const TheaterDropdown = ({lat,lng,city}) => {
   const minutes = String(currentDate.getMinutes()).padStart(2, '0');
   const seconds = String(currentDate.getSeconds()).padStart(2, '0');
 
-  const filmId = '364605';
+  const filmId = '365963';
   
     const getTheaters = async (lat,lng)=>{
       try{
         const res = await fetch(`https://api-gate2.movieglu.com/cinemasNearby/?n=30`,{
             method: 'GET',
             headers:{
-              'client' : 'MOVI_225',
+              'client' : 'MOVI_229',
               'x-api-key': import.meta.env.VITE_X_API_KEY,
               'authorization': import.meta.env.VITE_AUTHORIZATION,
               'territory': 'IN',
@@ -63,8 +65,8 @@ const TheaterDropdown = ({lat,lng,city}) => {
         //   setShowTimmings([]);
         //   console.log('No showings available for the selected theater');
         // }
-      };
-      console.log(activeTheater);
+        console.log(selectedTheaterId);
+    };
       
     
   return (
@@ -77,8 +79,11 @@ const TheaterDropdown = ({lat,lng,city}) => {
           </option>
         ))}
       </select>
+      {
+        activeTheater && <ShowTimings filmId={filmId} theaterId={activeTheater} date={date} lat={lat} lng={lng}/>
+      }
     </>
   )
 }
 
-export default TheaterDropdown
+export default TheaterDropdown;
