@@ -1,0 +1,14 @@
+.theaterdropdown{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+
+}
+
+
+select{
+    width: 70%;
+    padding: 10px;
+    background-color: rgba(94, 92, 92, 0.947);
+    border-bottom: solid 2px #f1ee39;
+}

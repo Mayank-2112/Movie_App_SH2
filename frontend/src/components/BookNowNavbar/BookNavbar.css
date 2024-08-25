@@ -1,0 +1,17 @@
+header{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.arrow{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: transparent;
+}
+header h1{
+    color: white;
+}

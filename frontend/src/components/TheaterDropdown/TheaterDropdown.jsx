@@ -1,5 +1,6 @@
 import React, { act, useEffect, useState } from 'react'
 import ShowTimings from '../ShowTimings/ShowTimings';
+import './TheaterDropdown.css';
 
 const TheaterDropdown = ({lat,lng,city,date}) => {
 
@@ -21,7 +22,7 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const seconds = String(currentDate.getSeconds()).padStart(2, "0");
 
-  const filmId = '365963';
+  const filmId = '364605';
   
     const getTheaters = async (lat,lng)=>{
       try{
@@ -71,7 +72,7 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
       
     
   return (
-    <>
+    <div className='theaterdropdown'>
       <select id="theater" onChange={handleActiveTheater}>
         <option value="">Select a theater</option>
         {theater &&
@@ -84,7 +85,7 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
       {
         activeTheater && <ShowTimings filmId={filmId} theaterId={activeTheater} date={date} lat={lat} lng={lng}/>
       }
-    </>
+    </div>
   );
 };
 
