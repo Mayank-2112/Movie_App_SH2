@@ -72,15 +72,13 @@ const BookNow = () => {
     
   return (
     <div className="main">
-      <h1>Book Now</h1>
+      <h1 className="BookNow">Book Now</h1>
       {weekDates && weekDates.map((item, index) => (
           <button key={index} onClick={()=>handleDateChange(index)}
           style={{background : index === activeDay ? 'blue':'grey'}}>
             {item.day}, {item.date}
           </button>
         ))}
-
-
 
 
       <form onSubmit={getGeoLocation}>
@@ -102,11 +100,11 @@ const BookNow = () => {
         </Link>
       </footer>
       <p>
-        {city}
-        {location.lat}
-        {location.lng}
-      </p>
-      {activeDay && <p>{activeDate.date}</p> }
+        {city} -
+        {" "}{location.lat},
+        {" "}{location.lng}
+        <br/>
+      {activeDay && <span>{activeDate.date}</span> } </p>
     </div>
   );
 };

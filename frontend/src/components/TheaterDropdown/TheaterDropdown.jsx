@@ -41,7 +41,8 @@ const TheaterDropdown = ({lat,lng,city,date}) => {
         const data = await res.json();
         if (res.ok){
           console.log(data.cinemas);
-          const filteredTheater = data.cinemas.filter(theat => theat.city === city);
+          const filteredTheater = data.cinemas;
+          // .filter(theat => theat.city === city)
           setTheater(filteredTheater);
         }
         else{
