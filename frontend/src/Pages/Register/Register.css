@@ -217,3 +217,7 @@ input::placeholder {
   text-align: center;
   cursor: pointer;
 }
+
+span {
+  cursor: pointer;
+}

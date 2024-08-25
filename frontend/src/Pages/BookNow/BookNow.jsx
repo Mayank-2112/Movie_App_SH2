@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./BookNow.css";
-import opencage from 'opencage-api-client';
+import opencage from "opencage-api-client";
 import TheaterDropdown from "../../components/TheaterDropdown/TheaterDropdown";
 
 const BookNow = () => {
-  const [city, setCity] = useState('');
-  const [location, setLocation]= useState({
-    lat:'',lng:''
+  const [city, setCity] = useState("");
+  const [location, setLocation] = useState({
+    lat: "",
+    lng: "",
   });
   const [activeDay, setActiveDay] = useState(0);
   const [activeDate, setActiveDate] = useState(null);
@@ -35,16 +36,19 @@ const BookNow = () => {
     setCity(e.target.value);
   };
 
-  const getGeoLocation = async (e)=>{
+  const getGeoLocation = async (e) => {
     e.preventDefault();
     console.log(city);
     try {
-      const data = await opencage.geocode({ q: city, key: import.meta.env.VITE_OPENCAGE_API_KEY });
+      const data = await opencage.geocode({
+        q: city,
+        key: import.meta.env.VITE_OPENCAGE_API_KEY,
+      });
       if (data.status.code === 200 && data.results.length > 0) {
         const place = data.results[0];
         setLocation({
           lat: place.geometry.lat,
-          lng: place.geometry.lng
+          lng: place.geometry.lng,
         });
       } else {
         console.log("Status", data.status.message);
@@ -57,7 +61,6 @@ const BookNow = () => {
         console.log("become a customer: https://opencagedata.com/pricing");
       }
     }
-    
   };
     
 
@@ -81,7 +84,13 @@ const BookNow = () => {
 
 
       <form onSubmit={getGeoLocation}>
-        <input type="text" placeholder=" city names" id="city" value={city} onChange={handleButtonClick} />
+        <input
+          type="text"
+          placeholder=" city names"
+          id="city"
+          value={city}
+          onChange={handleButtonClick}
+        />
         <button type="submit">Search</button>
       </form>
       <TheaterDropdown lat={location.lat} lng={location.lng} city={city} date={activeDate}/>
@@ -92,7 +101,8 @@ const BookNow = () => {
           <button>select seat</button>
         </Link>
       </footer>
-      <p>{city}
+      <p>
+        {city}
         {location.lat}
         {location.lng}
       </p>
