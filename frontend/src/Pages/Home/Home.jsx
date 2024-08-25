@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../components/Card/Card";
 import NavBar from "../../components/NavBar/NavBar";
-import KPA from "/Banner/KPA.jpeg";
+import KPA from "/banner/KPA.jpeg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 
