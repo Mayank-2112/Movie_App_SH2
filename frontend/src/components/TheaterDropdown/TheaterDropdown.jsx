@@ -43,7 +43,7 @@ const TheaterDropdown = ({ lat, lng, city }) => {
         const filteredTheater = data.cinemas.filter(
           (theat) => theat.city === city
         );
-        setTheaters(filteredTheater);
+        setTheater(filteredTheater);
       } else {
         console.error("HTTP error:", res.status, res.statusText);
         console.error("Response body:", data);
@@ -54,7 +54,7 @@ const TheaterDropdown = ({ lat, lng, city }) => {
   };
   const handleActiveTheater = (event) => {
     const selectedTheaterId = event.target.value;
-    const selectedTheater = theaters.find(
+    const selectedTheater = theater.find(
       (theat) => theat.cinema_id === selectedTheaterId
     );
 
@@ -74,7 +74,7 @@ const TheaterDropdown = ({ lat, lng, city }) => {
     <>
       <select id="theaters" onChange={handleActiveTheater}>
         <option value="">Select a theaters</option>
-        {theaters.map((theater, idx) => {
+        {theater.map((theater, idx) => {
           console.log(theater);
 
           return (
