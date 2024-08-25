@@ -8,6 +8,7 @@ import { app }  from '../../firebase';
 function Register() {
   
   const [formData, setFormData] = useState({});
+  const [toggle, setToggle]= useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const auth = getAuth(app);
@@ -32,6 +33,10 @@ function Register() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
+  const handleGoogleClick = () => {
+    console.log("handleGoogleClick"); //dummy function
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -124,7 +129,8 @@ function Register() {
           <div className="last-child">
             <p>
               Already a member{" "}
-                <span style={{ color: "#f1ee39", textDecoration: "none" }} onClick={() => handleToggle(!toggle)}>
+                <span style={{ color: "#f1ee39", textDecoration: "none" }} >
+                {/* onClick={() => handleToggle(!toggle)} */}
                   Login
                 </span>
             </p>
