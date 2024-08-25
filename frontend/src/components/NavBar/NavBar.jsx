@@ -4,7 +4,7 @@ import Profile from "../Profile/Profile";
 import { Link } from "react-router-dom";
 import './NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown, faUser} from '@fortawesome/free-solid-svg-icons';
 
 
 // function Navbar() {
@@ -67,30 +67,27 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   return (
-    <nav>
-      <input type="checkbox" id="check" />
-      <label htmlFor="check" className="checkbtn">
-      <FontAwesomeIcon icon={faBars} />
-      </label>
-      <label className="logo">FlixCribe</label>
-      <ul>
-        <li>
-          <Link to="/">Movies</Link>
-        </li>
-        <li>
-          <Link to="/">Contact</Link>
-        </li>
-        <li>
-          <Link to="/">Support</Link>
-        </li>
-        <li>
-          <Link to="/"><Search /></Link>
-        </li>
-        <li>
-          <Link to="/"><Profile /></Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="navbar">
+      <div className="navbar-left">
+        <Link to="/" className="site-title">FlixCribe</Link>
+        <ul>
+          <li>Movies</li>
+          <li>Support</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div className="navbar-right">
+        <Search />
+      </div>
+      <div className="navbar-profile">
+        {/* <img src="" alt="Profile" className="profile"/> */}
+        <FontAwesomeIcon icon={faUser} className="profile" />
+        <FontAwesomeIcon icon={faCaretDown}/>
+        <div className="dropdown">
+          <p>LogOut</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
