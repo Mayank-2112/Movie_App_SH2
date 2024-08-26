@@ -106,8 +106,7 @@ const Home = () => {
       <div className="hero" onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        style={{ cursor: 'pointer' }}>
+        onMouseLeave={handleMouseUp}>
         <div
         className="carousel-slides"
         style={{
