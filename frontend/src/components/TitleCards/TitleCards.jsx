@@ -5,12 +5,12 @@ import './TitleCards.css';
 const TitleCards = () => {
   return (
     <div className="titlecards">
-      <h2>Popular on Netflix</h2>
+      <h2 className="Heading">Trending</h2>
         <div className="card-list">
           {cards_data.map((card, index) => {
             return <div className="card" key= {index}>
               <img src={card.img} alt="Abcd" />
-              <p>hljbfkljdehf {card.name}</p>
+              <p>{card.name}</p>
             </div>
           })}
         </div>  

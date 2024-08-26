@@ -7,6 +7,19 @@
     box-sizing: border-box;
 }
 
+ body {
+    overflow: hidden;
+}
+
+/*body::-webkit-scrollbar {
+    display: none;
+}
+
+body{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
 .hero{
     /* width: 10px;
     height: 10px;
@@ -63,7 +76,7 @@
     gap: 30px;
 }
 
-.caption-img{
+.caption-mvname{
     width: 500px;
     height: auto;
     font-size: 50px;

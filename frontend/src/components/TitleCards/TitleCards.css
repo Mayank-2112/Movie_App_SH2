@@ -1,3 +1,20 @@
 h2, p{
     color: #fff;
 }
+
+.titlecards{
+    /* border: 2px solid green; */
+    margin-left: 5%;
+    width: 85%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 90%;
+}
+
+.titlecards h2{
+    width: 200px;
+    height: auto;
+    font-size: 30px;
+}

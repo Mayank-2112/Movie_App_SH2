@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
 import TitleCards from '../../components/TitleCards/TitleCards';
+import { connectStorageEmulator } from 'firebase/storage';
 
 const Home = () => {
 
@@ -14,6 +15,7 @@ const Home = () => {
   const [startX, setStartX] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [translateX, setTranslateX] = useState(0);
+  const [movieList, setMovieList] = useState([]);
 
   const slides = [
     { id: 1, path: 'https://image.tmdb.org/t/p/original/tabKOXkHRu6Nho2VOYrnyAirtY7.jpg'},
@@ -24,9 +26,9 @@ const Home = () => {
   const slideInterval = useRef(null);
 
   const extendedSlides = [
-    slides[slides.length - 1], // Clone of the last slide to show before the first slide
+    slides[slides.length - 1],
     ...slides,
-    slides[0], // Clone of the first slide to show after the last slide
+    slides[0],
   ];
 
   useEffect(() => {
@@ -38,13 +40,11 @@ const Home = () => {
     if (isTransitioning) return;
 
     if (currentIndex === 0) {
-      // Jump from the cloned last slide (index 0) to the actual last slide
       setTimeout(() => {
         setIsTransitioning(true);
         setCurrentIndex(slides.length);
       }, 500);
     } else if (currentIndex === slides.length + 1) {
-      // Jump from the cloned first slide (index slides.length + 1) to the actual first slide
       setTimeout(() => {
         setIsTransitioning(true);
         setCurrentIndex(1);
@@ -55,7 +55,7 @@ const Home = () => {
   const startAutoSlide = () => {
     slideInterval.current = setInterval(() => {
       handleNext();
-    }, 5000); // Slide every 5 seconds
+    }, 7000);
   };
 
   const stopAutoSlide = () => {
@@ -100,18 +100,21 @@ const Home = () => {
     setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     accept: 'application/json',
-  //     Authorization: import.meta.env.VITE_TMDB_AUTHORIZATION,
-  //   }
-  // };
+  const getMovie = () =>{
+  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}`)
+    .then(response => response.json())
+    .then(json => setMovieList(json.results.slice(0,3)))
+    .catch(err => console.error(err));
+
+    console.log("This is the movie list", movieList);
+  }
+
+  useEffect(() =>{
+    getMovie()
+  },[])
   
-  // fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error(err));
+  
+
 
   return (
     <div className="home">
@@ -136,15 +139,15 @@ const Home = () => {
         ))}
       </div>
         <div className="hero-caption">
-          <h3 className="caption-img" > Kingdom of the Planet of Apes</h3>
+          <h3 className="caption-mvname" > Kingdom of the Planet of Apes</h3>
           <p>Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he&apos;s been taught about the past and make choices that will define a future for apes and humans alike.</p>
           <div className="hero-btns">
             <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
           </div>
-          <TitleCards />
         </div>
       </div>
+      <TitleCards />
     </div>
   )
 };
