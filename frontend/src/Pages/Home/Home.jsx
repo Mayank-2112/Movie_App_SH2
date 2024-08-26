@@ -5,6 +5,7 @@ import KPA from "/banner/KPA.jpeg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
+import TitleCards from '../../components/TitleCards/TitleCards';
 
 const Home = () => {
 
@@ -141,6 +142,7 @@ const Home = () => {
             <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
           </div>
+          <TitleCards />
         </div>
       </div>
     </div>
