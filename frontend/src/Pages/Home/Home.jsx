@@ -15,9 +15,9 @@ const Home = () => {
   const [translateX, setTranslateX] = useState(0);
 
   const slides = [
-    { id: 1, path: '/banner/KPA.jpeg' },
-    { id: 2, path: '/banner/DM4.jpeg' },
-    { id: 3, path: '/banner/DaW.jpeg' },
+    { id: 1, path: 'https://image.tmdb.org/t/p/original/tabKOXkHRu6Nho2VOYrnyAirtY7.jpg'},
+    { id: 2, path: 'https://image.tmdb.org/t/p/original/stKGOm8UyhuLPR9sZLjs5AkmncA.jpg' },
+    { id: 3, path: 'https://image.tmdb.org/t/p/original/yDHYTfA3R0jFYba16jBB1ef8oIt.jpg' },
   ];
 
   const slideInterval = useRef(null);
@@ -98,6 +98,19 @@ const Home = () => {
     setIsTransitioning(false);
     setCurrentIndex((prevIndex) => prevIndex - 1);
   };
+
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     accept: 'application/json',
+  //     Authorization: import.meta.env.VITE_TMDB_AUTHORIZATION,
+  //   }
+  // };
+  
+  // fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
+  //   .then(response => response.json())
+  //   .then(response => console.log(response))
+  //   .catch(err => console.error(err));
 
   return (
     <div className="home">
