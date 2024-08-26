@@ -41,8 +41,10 @@
     width: 100%;
     max-height: 900px;
     height: 100%;
-    mask-image: linear-gradient(to right, transparent, black 95%);
-    -weblit-mask-image: linear-gradient(to right, transparent, black 75%);
+    mask-image: linear-gradient(to right, transparent, black 95%), linear-gradient(to top, transparent, black 95%);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 75%), linear-gradient(to top, transparent, black 75%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
     /* margin-left: 300px; */
     object-fit: cover;    
 }
