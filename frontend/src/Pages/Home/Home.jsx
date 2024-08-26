@@ -55,7 +55,7 @@ const Home = () => {
   const startAutoSlide = () => {
     slideInterval.current = setInterval(() => {
       handleNext();
-    }, 7000);
+    }, 10000);
   };
 
   const stopAutoSlide = () => {
