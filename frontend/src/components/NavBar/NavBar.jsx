@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import './NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCaretDown, faUser, faRightToBracket} from '@fortawesome/free-solid-svg-icons';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {signOutSuccess,signOutFailure} from '../../redux/user/userSlice.js';
 
 // function Navbar() {
 //   const [click, setClick] = useState(true);
@@ -66,6 +67,7 @@ import {useSelector} from 'react-redux';
 // export default Navbar;
 
 function Navbar() {
+  const dispatch = useDispatch();
   const {currentUser} = useSelector((state) =>state.user);
   console.log(currentUser);
 
@@ -85,7 +87,22 @@ function Navbar() {
     return () => window.removeEventListener("click", handleOutsideClick);
   }, []);
 
-
+  const handleSignOut = async()=>{
+    try {
+      const res = await fetch('/backend/user/signout',{
+        method: 'POST'
+      });
+      const data = await res.json();
+      if(res.ok){
+        dispatch(signOutSuccess());
+      }
+      else{
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
 
 
@@ -119,7 +136,7 @@ function Navbar() {
             ):(
               <div className="selected-item">Profile</div>
             )}
-            <div className="selected-item">Logout</div>
+            <div className="selected-item" onClick={handleSignOut}>Logout</div>
           </div>
         </div>
       ):(
