@@ -106,7 +106,7 @@ const Home = () => {
     .then(json => setMovieList(json.results.slice(0,3)))
     .catch(err => console.error(err));
 
-    console.log("This is the movie list", movieList);
+    console.log(movieList);
   }
 
   useEffect(() =>{

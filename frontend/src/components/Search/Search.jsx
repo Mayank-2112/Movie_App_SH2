@@ -8,7 +8,7 @@ function Search() {
   return (
     <>
     <div className="display">
-            <input type="text" id="password" placeholder="Search..."/>
+            <input type="text" id="passw" placeholder="Search..."/>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>
     </>
