@@ -142,7 +142,7 @@ const Home = () => {
           <h3 className="caption-mvname" > Kingdom of the Planet of Apes</h3>
           <p>Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he&apos;s been taught about the past and make choices that will define a future for apes and humans alike.</p>
           <div className="hero-btns">
-            <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
+            <a href="http://localhost:5173/summary"><button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button></a>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
           </div>
         </div>
