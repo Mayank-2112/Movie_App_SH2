@@ -1,56 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Card from "../../components/Card/Card";
+import { Link } from 'react-router-dom';
 import NavBar from "../../components/NavBar/NavBar";
-import KPA from "/banner/KPA.jpeg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
 import TitleCards from '../../components/TitleCards/TitleCards';
-import { connectStorageEmulator } from 'firebase/storage';
 
 const Home = () => {
-
-  const [currentIndex, setCurrentIndex] = useState(1); // Start from index 1 because of the prepended clone
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [translateX, setTranslateX] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [movieList, setMovieList] = useState([]);
-
-  const slides = [
-    { id: 1, path: 'https://image.tmdb.org/t/p/original/tabKOXkHRu6Nho2VOYrnyAirtY7.jpg'},
-    { id: 2, path: 'https://image.tmdb.org/t/p/original/stKGOm8UyhuLPR9sZLjs5AkmncA.jpg' },
-    { id: 3, path: 'https://image.tmdb.org/t/p/original/yDHYTfA3R0jFYba16jBB1ef8oIt.jpg' },
-  ];
-
+  const carouselRef = useRef(null);
   const slideInterval = useRef(null);
 
-  const extendedSlides = [
-    slides[slides.length - 1],
-    ...slides,
-    slides[0],
-  ];
+  useEffect(() => {
+    const getMovies = async () => {
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}`);
+        const data = await response.json();
+        setMovieList(data.results.slice(0, 10)); // Use the first 3 movies
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    getMovies();
+  }, []);
 
   useEffect(() => {
-    startAutoSlide();
-    return () => stopAutoSlide();
-  }, [currentIndex]);
-
-  useEffect(() => {
-    if (isTransitioning) return;
-
-    if (currentIndex === 0) {
-      setTimeout(() => {
-        setIsTransitioning(true);
-        setCurrentIndex(slides.length);
-      }, 500);
-    } else if (currentIndex === slides.length + 1) {
-      setTimeout(() => {
-        setIsTransitioning(true);
-        setCurrentIndex(1);
-      }, 500);
+    if (movieList.length > 0) {
+      startAutoSlide();
     }
-  }, [currentIndex]);
+    return () => stopAutoSlide();
+  }, [movieList]);
 
   const startAutoSlide = () => {
     slideInterval.current = setInterval(() => {
@@ -91,65 +76,73 @@ const Home = () => {
   };
 
   const handleNext = () => {
-    setIsTransitioning(false);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
   const handlePrev = () => {
-    setIsTransitioning(false);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
-  const getMovie = () =>{
-  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}`)
-    .then(response => response.json())
-    .then(json => setMovieList(json.results.slice(0,3)))
-    .catch(err => console.error(err));
+  useEffect(() => {
+    if (isTransitioning) {
+      const transitionTimeout = setTimeout(() => {
+        if (currentIndex === movieList.length) {
+          setIsTransitioning(false);
+          setCurrentIndex(0);
+        } else if (currentIndex === -1) {
+          setIsTransitioning(false);
+          setCurrentIndex(movieList.length - 1);
+        } else {
+          setIsTransitioning(false);
+        }
+      }, 500);
+      return () => clearTimeout(transitionTimeout);
+    }
+  }, [currentIndex, isTransitioning, movieList]);
 
-    console.log(movieList);
-  }
+  const currentSlide = movieList[(currentIndex + movieList.length) % movieList.length];
 
-  useEffect(() =>{
-    getMovie()
-  },[])
-  
-  
-
+  if (!currentSlide) return <div>Loading...</div>;
 
   return (
     <div className="home">
       <NavBar />
-      {/* <Banner /> */}
-      <div className="hero" onMouseDown={handleMouseDown}
+      <div className="hero"
+        onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}>
         <div
-        className="carousel-slides"
-        style={{
-          transform: `translateX(calc(-${currentIndex * 100}% + ${translateX}px))`,
-          transition: isDragging || isTransitioning ? 'none' : 'transform 0.5s ease-in-out',
-        }}
-        onTransitionEnd={() => setIsTransitioning(false)}
-      >
-        {extendedSlides.map((slide, index) => (
-          <div key={index} className="carousel-slide">
-            <img src={slide.path} alt={`Slide ${slide.id}`} className="banner-img" />
-          </div>
-        ))}
-      </div>
-        <div className="hero-caption">
-          <h3 className="caption-mvname" > Kingdom of the Planet of Apes</h3>
-          <p>Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he&apos;s been taught about the past and make choices that will define a future for apes and humans alike.</p>
+          className="carousel-slides"
+          style={{
+            transform: `translateX(calc(-${currentIndex * 100}% + ${translateX}px))`,
+            transition: isDragging ? 'none' : 'transform 0.5s ease-in-out',
+          }}
+        >
+          {movieList.map((slide, index) => (
+            <div key={index} className="carousel-slide">
+              <img src={`https://image.tmdb.org/t/p/original${slide.backdrop_path}`} alt={`Slide ${slide.original_title}`} className="banner-img" />
+            
+              <div className="hero-caption">
+          <h3 className="caption-mvname">{currentSlide.original_title}</h3>
+          <p>{currentSlide.overview}</p>
           <div className="hero-btns">
-            <a href="http://localhost:5173/summary"><button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button></a>
+            <Link to="/summary"><button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button></Link>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
           </div>
+        </div>            
+            </div>
+          ))}
         </div>
+        
       </div>
       <TitleCards />
     </div>
-  )
+  );
 };
 
 export default Home;
