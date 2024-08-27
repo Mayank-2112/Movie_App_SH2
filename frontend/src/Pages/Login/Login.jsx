@@ -3,14 +3,17 @@ import "./Login.css"; // Import the CSS file
 import { Link, useNavigate } from "react-router-dom";
 import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
 import { app } from '../../firebase'
+import {useSelector, useDispatch} from 'react-redux';
+import { signInStart, signInSuccess, signInFailure } from '../../redux/user/userSlice.js';
 
 
 function Login() {
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState("");
+  const {error: errorMessage} = useSelector(state => state.user)
+
   const navigate = useNavigate();
   const auth = getAuth(app);
-
+  const dispatch = useDispatch();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
@@ -36,10 +39,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      return setError("Please fill all the fields!!");
+      return dispatch(signInFailure('Please fill all the fields!!'));
     };
     try {
-      setError(null);
+      dispatch(signInStart());
       const res = await fetch("/backend/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -47,13 +50,14 @@ function Login() {
       });
       const data = await res.json();
       if (data.success === false) {
-        setError(data.message);
+        dispatch(signInFailure(data.message));
       }
       if (res.ok) {
+        dispatch(signInSuccess(data));
         navigate("/");
       }
     } catch (error) {
-      setError(error.message);
+      return dispatch(signInFailure(error.message))
     }
   };
   const handleGoogleClick = async(e)=>{
@@ -73,10 +77,11 @@ function Login() {
             });
             const data = await res.json()
             if(res.ok){
+                dispatch(signInSuccess(data));
                 navigate('/');
             }
         } catch (error) {
-            console.log(error);
+            dispatch(signInFailure(error.message));
         }
     }
   
@@ -105,7 +110,7 @@ function Login() {
             <input type="password" placeholder=" Password" id='password' onChange={handleChange}/>
           </div>
           <div className="login-btn">
-            <button className="btn" style={{ backgroundColor: "#FFC107" }} onClick={handleSubmit}>
+            <button className="btn" style={{ backgroundColor: "#FFC107" }}type="submit" onClick={handleSubmit}>
               Login
             </button>
             <h6>
@@ -151,7 +156,7 @@ function Login() {
               </Link>
             </p>
           </div>
-          {error && <p id="error">{error}</p>}
+          {errorMessage && <p id="error">{errorMessage}</p>}
         </div>
       </div>
     </div>
