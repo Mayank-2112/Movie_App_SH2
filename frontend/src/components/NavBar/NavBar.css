@@ -89,3 +89,50 @@
 .navbar-profile:hover .dropdown {
   display: block;
 }
+.Btn-login{
+    border: 0;
+    outline: 0;
+    padding: 8px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #FFFF00;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.selector .select img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: solid 2px #FFFF00;
+
+}
+.selector {
+  position: relative;
+  display: inline-block;
+}
+
+.select-item {
+  display: none;
+  position: absolute;
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.selected-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #FFFF00;
+  background: black;
+}
+
+.selected-item:hover {
+  background-color: #191919;
+  color: #FFFF00;
+  border: solid 2px #FFFF00;
+}

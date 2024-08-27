@@ -77,10 +77,11 @@ function Login() {
             });
             const data = await res.json()
             if(res.ok){
+                dispatch(signInSuccess(data));
                 navigate('/');
             }
         } catch (error) {
-            console.log(error);
+            dispatch(signInFailure(error.message));
         }
     }
   

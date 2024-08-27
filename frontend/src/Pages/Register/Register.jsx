@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import Link for navigation
 import "./Register.css";
 import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
-
+import {signInStart, signInSuccess, signInFailure} from '../../redux/user/userSlice.js'
 import { app }  from '../../firebase';
+import {useDispatch} from 'react-redux';
 
 function Register() {
-  
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
   const [toggle, setToggle]= useState(true);
   const [error, setError] = useState(null);
@@ -50,10 +51,11 @@ function Register() {
             });
             const data = await res.json()
             if(res.ok){
+                dispatch(signInSuccess(data));
                 navigate('/');
             }
         } catch (error) {
-            console.log(error);
+          dispatch(signInFailure(error.message));
         }
     }
   
