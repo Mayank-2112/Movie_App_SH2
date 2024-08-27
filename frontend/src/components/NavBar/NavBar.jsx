@@ -111,9 +111,8 @@ function Navbar() {
       <div className="navbar-left">
         <Link to="/" className="site-title">FlixCribe</Link>
         <ul>
-          <li>Movies</li>
-          <li>Support</li>
-          <li>Contact</li>
+          <li>Now Showing</li>
+          <li>Upcoming</li>
         </ul>
       </div>
       <div className="navbar-right">
