@@ -21,7 +21,6 @@ function Register() {
     "Carousel/FuriosaMadMAx.jpg",
     "Carousel/KPA.jpeg",
   ];
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -34,9 +33,31 @@ function Register() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleGoogleClick = () => {
-    console.log("handleGoogleClick"); //dummy function
-  }
+  const handleGoogleClick = async(e) => {
+    const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({prompt: 'select_account'});
+        try {
+            const resultsFromGoogle = await signInWithPopup(auth, provider);
+            console.log(resultsFromGoogle);
+            const res = await fetch('/backend/auth/google',{
+                method: 'POST',
+                headers: {'Content-Type': 'Application/json'},
+                body: JSON.stringify({
+                    name: resultsFromGoogle.user.displayName,
+                    email: resultsFromGoogle.user.email,
+                    googlePhotoURL: resultsFromGoogle.user.photoURL,
+                }),
+            });
+            const data = await res.json()
+            if(res.ok){
+                navigate('/');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
