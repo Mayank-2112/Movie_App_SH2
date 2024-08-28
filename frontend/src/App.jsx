@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./Pages/Home/Home";
 import BookNow from "./Pages/BookNow/BookNow";
 import Seating from "./Pages/Seating/Seating";
+import Admin from "./Pages/Admin/Admin";
 function App() {
   const handleSearch = (query) => {
     console.log("Searching for:", query);
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/booknow" element={<BookNow />}></Route>
           <Route path="/seating" element={<Seating />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </div>
       {/* <Register/> */}
