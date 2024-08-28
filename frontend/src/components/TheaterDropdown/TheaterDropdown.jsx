@@ -42,16 +42,10 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
       );
       const data = await res.json();
       if (res.ok) {
-<<<<<<< HEAD
-        console.log(data.cinemas);
-        const filteredTheater = data.cinemas;
-        // .filter(theat => theat.city === city)
-=======
         // console.log(data.cinemas);
         const filteredTheater = data.cinemas.filter(
           (theat) => theat.city === city
         );
->>>>>>> 43be940f50849fe8bd7d5066f3849333aa1ce484
         setTheater(filteredTheater);
       } else {
         console.error("HTTP error:", res.status, res.statusText);
@@ -77,7 +71,6 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
     // }
     console.log(selectedTheaterId);
   };
-<<<<<<< HEAD
 
   return (
     <div className="theaterdropdown">
@@ -85,24 +78,11 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
         <option value="">Select a theater</option>
         {theater &&
           theater.map((theater, idx) => (
-=======
-  console.log(activeTheater);
-  // console.log(theaters);
-
-  return (
-    <>
-      <select id="theaters" onChange={handleActiveTheater}>
-        <option value="">Select a theaters</option>
-        {theater.map((theater, idx) => {
-          console.log(theater);
-
-          return (
->>>>>>> 43be940f50849fe8bd7d5066f3849333aa1ce484
             <option key={idx} value={theater.cinema_id}>
               {theater.cinema_name}, {theater.address}
             </option>
-          );
-        })}
+          )
+        )};
       </select>
       {activeTheater && (
         <ShowTimings
