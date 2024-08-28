@@ -11,14 +11,14 @@
     overflow: hidden;
 } */
 
-/*body::-webkit-scrollbar {
+body::-webkit-scrollbar {
     display: none;
 }
 
 body{
     -ms-overflow-style: none;
     scrollbar-width: none;
-} */
+}
 
 .hero{
     /* width: 10px;
@@ -34,7 +34,7 @@ body{
     outline: 0; */
     position: relative;
     width: 100%;
-    height: 750px;
+    height: 800px;
     overflow: hidden;
 }
 
@@ -140,8 +140,4 @@ body{
 
 .hero-btns .btn.dark-btn:hover{
     background: #6d6d6e66;
-}
-
-.test{
-    
 }

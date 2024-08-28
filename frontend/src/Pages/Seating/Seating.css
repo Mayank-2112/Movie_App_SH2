@@ -1,0 +1,48 @@
+.theater {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.screen {
+  width: 80%;
+  height: 50px;
+  background-color: #ccc;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seating {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.seat.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.info {
+  margin-top: 20px;
+}

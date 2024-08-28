@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import Link for navigation
 import "./Register.css";
 import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
-
+import {signInStart, signInSuccess, signInFailure} from '../../redux/user/userSlice.js'
 import { app }  from '../../firebase';
+import {useDispatch} from 'react-redux';
 
 function Register() {
-  
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
   const [toggle, setToggle]= useState(true);
   const [error, setError] = useState(null);
@@ -21,7 +22,6 @@ function Register() {
     "Carousel/FuriosaMadMAx.jpg",
     "Carousel/KPA.jpeg",
   ];
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -34,9 +34,32 @@ function Register() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleGoogleClick = () => {
-    console.log("handleGoogleClick"); //dummy function
-  }
+  const handleGoogleClick = async(e) => {
+    const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({prompt: 'select_account'});
+        try {
+            const resultsFromGoogle = await signInWithPopup(auth, provider);
+            console.log(resultsFromGoogle);
+            const res = await fetch('/backend/auth/google',{
+                method: 'POST',
+                headers: {'Content-Type': 'Application/json'},
+                body: JSON.stringify({
+                    name: resultsFromGoogle.user.displayName,
+                    email: resultsFromGoogle.user.email,
+                    googlePhotoURL: resultsFromGoogle.user.photoURL,
+                }),
+            });
+            const data = await res.json()
+            if(res.ok){
+                dispatch(signInSuccess(data));
+                navigate('/');
+            }
+        } catch (error) {
+          dispatch(signInFailure(error.message));
+        }
+    }
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
