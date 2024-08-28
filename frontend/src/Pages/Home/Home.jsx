@@ -104,6 +104,8 @@ const Home = () => {
     }
   }, [currentIndex, isTransitioning, movieList]);
 
+  console.log(movieList);
+
   const currentSlide = movieList[(currentIndex + movieList.length) % movieList.length];
 
   if (!currentSlide) return <div>Loading...</div>;
