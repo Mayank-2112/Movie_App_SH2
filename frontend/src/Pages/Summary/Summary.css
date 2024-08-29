@@ -8,9 +8,10 @@
   background-repeat: no-repeat;
   background-attachment: fixed; /* Makes the background image static */
   mask-image: linear-gradient(to right, transparent, black 95%), linear-gradient(to top, transparent, black 95%);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 75%), linear-gradient(to top, transparent, black 75%);
-    mask-composite: intersect;
-    -webkit-mask-composite: source-in;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 75%), linear-gradient(to top, transparent, black 75%);
+  mask-composite: intersect;
+  filter: brightness(57%);
+  -webkit-mask-composite: source-in;
   z-index: 0;
 }
 
@@ -68,6 +69,7 @@
 }
 
 .sd-genre {
+  color: #FFFF00;
   display: flex;
   margin-top: 5%;
   width: 100%;
