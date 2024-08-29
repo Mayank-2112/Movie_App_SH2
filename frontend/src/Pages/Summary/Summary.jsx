@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import './Summary.css';
 
 const Summary = () => {
@@ -39,7 +39,9 @@ const Summary = () => {
         </div>
         <div className="sd-caption">
           <h3 className="sd-title">{mv_details.title}</h3>
-          <div className="sd-genre">genre here</div>
+          <div className="sd-genre">
+          <FontAwesomeIcon icon={faStar} /><p>{mv_details.vote_average}</p>
+          </div>
           <p className="sd-overview">{mv_details.overview}</p>
           <div className="sd-btn">buttons here</div>
         </div>
