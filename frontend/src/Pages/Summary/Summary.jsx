@@ -28,7 +28,7 @@ const Summary = () => {
   return (
     <div 
       className="sd-home"
-      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mv_details.backdrop_path})` }}
+      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mv_details.backdrop_path})`}}
     >
       <Link to ='/'>
       <FontAwesomeIcon icon={faArrowLeft} className="sd-back"/>
@@ -40,7 +40,7 @@ const Summary = () => {
         <div className="sd-caption">
           <h3 className="sd-title">{mv_details.title}</h3>
           <div className="sd-genre">genre here</div>
-          <p>{mv_details.overview}</p>
+          <p className="sd-overview">{mv_details.overview}</p>
           <div className="sd-btn">buttons here</div>
         </div>
       </div>
