@@ -2,11 +2,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import NavBar from "./components/NavBar/NavBar";
 import Home from "./Pages/Home/Home";
 import BookNow from "./Pages/BookNow/BookNow";
+import Summary from "./Pages/Summary/Summary";
 import Seating from "./Pages/Seating/Seating";
 import Admin from "./Pages/Admin/Admin";
+
 function App() {
   const handleSearch = (query) => {
     console.log("Searching for:", query);
@@ -23,6 +24,7 @@ function App() {
           <Route path="/booknow" element={<BookNow />}></Route>
           <Route path="/seating" element={<Seating />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/summary" element={<Summary />}></Route>
         </Routes>
       </div>
       {/* <Register/> */}

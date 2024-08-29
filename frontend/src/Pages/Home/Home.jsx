@@ -133,8 +133,10 @@ const Home = () => {
           <h3 className="caption-mvname">{currentSlide.original_title}</h3>
           <p>{currentSlide.overview}</p>
           <div className="hero-btns">
-            <Link to="/summary"><button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button></Link>
+           <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
+           <Link to="/summary">
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
+           </Link>
           </div>
         </div>            
             </div>
