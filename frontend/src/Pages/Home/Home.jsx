@@ -108,7 +108,11 @@ const Home = () => {
 
   const currentSlide = movieList[(currentIndex + movieList.length) % movieList.length];
 
-  if (!currentSlide) return <div>Loading...</div>;
+  // if (!currentSlide) return <div>Loading...</div>;
+
+  // const handleSummary(()=>{
+
+  // })
 
   return (
     <div className="home">
@@ -134,7 +138,7 @@ const Home = () => {
           <p>{currentSlide.overview}</p>
           <div className="hero-btns">
            <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
-           <Link to="/summary">
+           <Link to={`/summary/${currentSlide.id}`}>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
            </Link>
           </div>

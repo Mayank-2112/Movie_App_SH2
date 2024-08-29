@@ -24,7 +24,7 @@ function App() {
           <Route path="/booknow" element={<BookNow />}></Route>
           <Route path="/seating" element={<Seating />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
-          <Route path="/summary" element={<Summary />}></Route>
+          <Route path="/summary/:id" element={<Summary />}></Route>
         </Routes>
       </div>
       {/* <Register/> */}
