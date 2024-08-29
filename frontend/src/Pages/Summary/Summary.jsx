@@ -44,7 +44,7 @@ const Summary = () => {
         <div className="sd-caption">
           <h3 className="sd-title">{mv_details.title}</h3>
           <div className="sd-genre">
-          <FontAwesomeIcon icon={faStar} /><p className="rating">{mv_details.vote_average}</p>
+          <FontAwesomeIcon icon={faStar} /><p className="rating">{(Math.floor(mv_details.vote_average * 10)/10).toFixed(1)}</p>
           {/* <div className="gen">
             <button className="gen1">Crime</button>
           </div> */}
