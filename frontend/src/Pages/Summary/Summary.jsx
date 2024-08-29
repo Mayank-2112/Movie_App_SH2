@@ -26,11 +26,15 @@ const Summary = () => {
   console.log(mv_details);
   
   return (
+    <>
     <div 
       className="sd-home"
       style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mv_details.backdrop_path})`}}
     >
-      <Link to ='/'>
+    </div>
+
+    <div className="sd-above">
+    <Link to ='/'>
       <FontAwesomeIcon icon={faArrowLeft} className="sd-back"/>
       </Link>
       <div className="sd-container">
@@ -40,14 +44,18 @@ const Summary = () => {
         <div className="sd-caption">
           <h3 className="sd-title">{mv_details.title}</h3>
           <div className="sd-genre">
-          <FontAwesomeIcon icon={faStar} /><p>{mv_details.vote_average}</p>
+          <FontAwesomeIcon icon={faStar} /><p className="rating">{mv_details.vote_average}</p>
+          {/* <div className="gen">
+            <button className="gen1">Crime</button>
+          </div> */}
           </div>
           <p className="sd-overview">{mv_details.overview}</p>
           <div className="sd-btn">buttons here</div>
         </div>
       </div>
       <div className="sd-cast">Cast Cards</div>
-    </div>
+      </div>
+    </>
   );
 };
 
