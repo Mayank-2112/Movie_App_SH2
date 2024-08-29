@@ -6,7 +6,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Makes the background image static */
+  background-attachment: fixed;
   mask-image: linear-gradient(to right, transparent, black 95%), linear-gradient(to top, transparent, black 95%);
   -webkit-mask-image: linear-gradient(to right, transparent, black 75%), linear-gradient(to top, transparent, black 75%);
   mask-composite: intersect;
