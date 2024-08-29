@@ -43,6 +43,7 @@
 .navbar-left ul li{
   cursor: pointer;
   font-weight: 400;
+  /* width: 90px; */
 }
 
 .navbar-left ul li:hover{
@@ -53,6 +54,8 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  margin-left: 45%;
+  margin-top: -0.5%;
 }
 
 .navbar-right .profile{
@@ -101,6 +104,7 @@
     background: #FFFF00;
     border-radius: 20px;
     cursor: pointer;
+    margin-left: 100%;
 }
 .selector .select img{
   width: 45px;
