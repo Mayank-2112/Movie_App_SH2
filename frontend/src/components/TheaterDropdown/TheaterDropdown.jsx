@@ -44,7 +44,7 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
       if (res.ok) {
 
         console.log(data.cinemas);
-        const filteredTheater = data.cinemas;
+        //filteredTheater = data.cinemas;
         // .filter(theat => theat.city === city)
 
         // console.log(data.cinemas);
@@ -90,8 +90,6 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
 
           ))}
 
-          )
-        )};
 
       </select>
       {activeTheater && (
