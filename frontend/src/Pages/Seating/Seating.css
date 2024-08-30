@@ -4,9 +4,22 @@
   align-items: center;
   padding: 20px;
 }
-
-.screen {
+.screen-exit{
+  display: flex;
+  justify-content: space-around;
   width: 80%;
+}
+.exit{
+  background-color: #ccc ;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+.screen {
+  width: 70%;
   height: 50px;
   background-color: #ccc;
   margin-bottom: 20px;
@@ -18,12 +31,24 @@
 .seating {
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 .row {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+}
+.club, .prime{
+  color: #4caf50;
+  font-size: 25px;
+  margin-top: 50px;
+  margin-bottom: -70px;
+}
+.row1, .row2{
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
 }
 
 .seat {
