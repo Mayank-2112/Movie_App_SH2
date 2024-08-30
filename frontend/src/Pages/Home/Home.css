@@ -11,14 +11,13 @@
     overflow: hidden;
 } */
 
-/* body::-webkit-scrollbar {
+body::-webkit-scrollbar {
     display: none;
 }
 
 body{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-} */
+    overflow-y: scroll;
+}
 
 .hero{
     /* width: 10px;

@@ -7,13 +7,6 @@ const TitleCard = ({title, category}) => {
   const [apiData, setApiData] = useState([]);
   const cardsRef = useRef();
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZDI5MjgxYjJjZWYzZjk1Nzg2OTY2OWE1Y2ZkZGYxNyIsIm5iZiI6MTcyNDk5NTU4Ny4wNDc3ODMsInN1YiI6IjY2Yzk1NTA3MjA1NzY2YTI4MmVhYWJlYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Zo9oZMkwVMBKRX_oaBhN3jvuUvJC54C2QzEK6SB7Ec0'
-    }
-  };
   
 
 
@@ -53,16 +46,14 @@ const TitleCard = ({title, category}) => {
     <div className="title-cards">
       <h2>{title?title:"Now Showing"}</h2>
       <div className="card-list" ref={cardsRef}>
-        {apiData.map((card, indx) => {
-          return (
-            <Link to={`/summary/${card.id}`}>
-            <div className="cardX" key={indx}>
+        {apiData.map((card, indx) => (
+          <div className="cardX" key={indx}>
+              <Link to={`/summary/${card.id}`}>
               <img src={`https://image.tmdb.org/t/p/w500${card.poster_path}`} alt={card.title} />
-              {/* <p>{card.original_title}</p> */}
+              </Link>
+              <p>{card.original_title}</p>
             </div>
-            </Link>
-          );
-        })}
+        ))}
       </div>
     </div>
   );
