@@ -6,7 +6,7 @@ import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import './Summary.css';
 
 const Summary = () => {
-  const { id } = useParams(); // Destructure the id from useParams
+  const { id } = useParams();
   const [mv_details, setMv_details] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Summary = () => {
     getMovies();
   }, [id]);
 
-  console.log(mv_details);
+  //console.log(mv_details);
   
   return (
     <>
