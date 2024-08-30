@@ -20,6 +20,7 @@ const Home = () => {
     const getMovies = async () => {
       try {
         const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}`);
+        //https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_origin_country=IN --> For Indian
         const data = await response.json();
         setMovieList(data.results.slice(0, 10)); // Use the first 3 movies
       } catch (error) {
@@ -108,7 +109,11 @@ const Home = () => {
 
   const currentSlide = movieList[(currentIndex + movieList.length) % movieList.length];
 
-  if (!currentSlide) return <div>Loading...</div>;
+  // if (!currentSlide) return <div>Loading...</div>;
+
+  // const handleSummary(()=>{
+
+  // })
 
   return (
     <div className="home">
@@ -133,8 +138,10 @@ const Home = () => {
           <h3 className="caption-mvname">{currentSlide.original_title}</h3>
           <p>{currentSlide.overview}</p>
           <div className="hero-btns">
-            <Link to="/summary"><button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button></Link>
+           <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
+           <Link to={`/summary/${currentSlide.id}`}>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
+           </Link>
           </div>
         </div>            
             </div>

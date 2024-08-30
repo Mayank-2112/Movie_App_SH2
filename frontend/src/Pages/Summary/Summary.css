@@ -1,3 +1,111 @@
-body {
-  color:#fff;
+.sd-home {
+  color: #ffffff;
+  position: relative;
+  width: 100%;
+  height: 1600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  mask-image: linear-gradient(to right, transparent, black 95%), linear-gradient(to top, transparent, black 95%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 75%), linear-gradient(to top, transparent, black 75%);
+  mask-composite: intersect;
+  filter: brightness(57%);
+  -webkit-mask-composite: source-in;
+  z-index: 0;
+}
+
+.sd-above {
+  color: #ffffff;
+  z-index: 1;
+  margin-top: -85%;
+  position: relative;  
+}
+
+.sd-back {
+  font-size: 150%;
+  margin-left: 1%;
+  margin-top: 2%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sd-container {
+  display: flex;
+  height: 40%;
+  width: 65%;
+  margin-left: 25%;
+  margin-top: 7%;
+  position: relative;
+  z-index: 1; 
+}
+
+.sd-poster {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 40%;
+  /* margin-left: 6%; */
+}
+
+.sd-poster img {
+  /* margin-left: 14.5%; */
+  width: 70%;
+  height: 100%;
+}
+
+.sd-caption {
+  display: flex;
+  width: 48%;
+  height: auto;
+  flex-direction: column;
+  border-radius: 30px;
+  background: rgba(243, 236, 236, 0.096);
+}
+
+.sd-title {
+  width: 80%;
+  margin-left: 2%;
+  font-size: 320%;
+  height: auto;
+}
+
+.sd-genre {
+  color: #FFFF00;
+  display: flex;
+  margin-top: 5%;
+  margin-left: 2%;
+  width: auto;
+  height: 8%;
+}
+
+.sd-genre .rating {
+  margin-left: 2%;
+  margin-top: -0.5%;
+}
+
+.sd-overview {
+  height: auto;
+  margin-left: 2%;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.22em;
+  line-height: 1.6;
+  font-weight: 350;
+  font-style: normal;
+}
+
+.sd-btn {
+  display: flex;
+  margin-top: 10%;
+  margin-left: 2%;
+  height: 11%;
+}
+
+.sd-cast {
+  display: flex;
+  height: 40%;
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  z-index: 1; /* Ensure this content is above the background */
 }
