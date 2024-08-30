@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./TitleCard.css";
-import cards_data from "../TitleCards/Cards_data";
 import { Link } from "react-router-dom";
 
 const TitleCard = ({title, category}) => {
