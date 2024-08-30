@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
-import TitleCards from '../../components/TitleCards/TitleCards';
+import TitleCard from '../../components/Slider/TitleCard';
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -135,7 +135,7 @@ const Home = () => {
               <img src={`https://image.tmdb.org/t/p/original${slide.backdrop_path}`} alt={`Slide ${slide.original_title}`} className="banner-img" />
             
               <div className="hero-caption">
-          <h3 className="caption-mvname">{currentSlide.original_title}</h3>
+          <h3 className="caption-mvname">{currentSlide.title}</h3>
           <p>{currentSlide.overview}</p>
           <div className="hero-btns">
            <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
@@ -149,7 +149,8 @@ const Home = () => {
         </div>
         
       </div>
-      <TitleCards />
+      <TitleCard title={'Now Showing'} category={'now_playing'} />
+      <TitleCard title={'Upcoming'} category={'upcoming'} />
     </div>
   );
 };
