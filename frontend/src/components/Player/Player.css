@@ -1,0 +1,22 @@
+.player{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player .back_arrow{
+    top: 20%;
+    left: 20px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.player iframe{
+    border-radius: 10px;
+    /* width: 300%;
+    margin-left: 50%; */
+}

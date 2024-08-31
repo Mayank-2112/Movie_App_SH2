@@ -63,12 +63,10 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if ( !formData.fullname || !formData.email || !formData.password || !formData.confirmPassword) {
+    if ( !formData.fullname || !formData.email || !formData.password || !formData.city) {
       return setError("Please fill all the fields!!");
     };
-    if (formData.password !== formData.confirmPassword){
-      return setError('Passwords do not match. Retry!!');
-    };
+    
     try {
       setError(null);
       const res = await fetch("/backend/auth/signup", {
@@ -109,8 +107,8 @@ function Register() {
           <div className="buttons">
             <input type="text" placeholder=" Full name" id="fullname" onChange={handleChange} />
             <input type="email" placeholder=" Email" id="email" onChange={handleChange} />
+            <input type="text" placeholder="City" id="city" onChange={handleChange} />
             <input type="password" placeholder=" Password" id="password" onChange={handleChange} />
-            <input type="password" placeholder=" Confirm password" id="confirmPassword" onChange={handleChange}/>
           </div>
           
           <div id="login-btn">
@@ -152,10 +150,11 @@ function Register() {
           <div className="last-child">
             <p>
               Already a member{" "}
-                <span style={{ color: "#f1ee39", textDecoration: "none" }} >
-                {/* onClick={() => handleToggle(!toggle)} */}
+              <Link to="/login">
+                <span style={{ color: "#f1ee39", textDecoration: "none" }}>
                   Login
                 </span>
+              </Link>
             </p>
           </div>
           {

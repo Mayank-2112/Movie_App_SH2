@@ -4,7 +4,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
-import TitleCards from '../../components/TitleCards/TitleCards';
+import TitleCard from '../../components/Slider/TitleCard';
+import Profile from '../../components/Profile/Profile';
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,6 +21,7 @@ const Home = () => {
     const getMovies = async () => {
       try {
         const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}`);
+        //https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_origin_country=IN --> For Indian
         const data = await response.json();
         setMovieList(data.results.slice(0, 10)); // Use the first 3 movies
       } catch (error) {
@@ -108,11 +110,20 @@ const Home = () => {
 
   const currentSlide = movieList[(currentIndex + movieList.length) % movieList.length];
 
-  if (!currentSlide) return <div>Loading...</div>;
+  // if (!currentSlide) return <div>Loading...</div>;
+
+  // const handleSummary(()=>{
+
+  // })
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const handleProfileClick = () => {
+    setPopupVisible(!isPopupVisible);
+  };
 
   return (
     <div className="home">
-      <NavBar />
+      <NavBar onProfileClick={handleProfileClick}/>
       <div className="hero"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -130,11 +141,13 @@ const Home = () => {
               <img src={`https://image.tmdb.org/t/p/original${slide.backdrop_path}`} alt={`Slide ${slide.original_title}`} className="banner-img" />
             
               <div className="hero-caption">
-          <h3 className="caption-mvname">{currentSlide.original_title}</h3>
+          <h3 className="caption-mvname">{currentSlide.title}</h3>
           <p>{currentSlide.overview}</p>
           <div className="hero-btns">
-            <Link to="/summary"><button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button></Link>
+           <button className="btn"><FontAwesomeIcon icon={faPlay} />Book Now</button>
+           <Link to={`/summary/${currentSlide.id}`}>
             <button className="btn dark-btn"><FontAwesomeIcon icon={faCircleInfo} />More Info</button>
+           </Link>
           </div>
         </div>            
             </div>
@@ -142,7 +155,9 @@ const Home = () => {
         </div>
         
       </div>
-      <TitleCards />
+      <TitleCard title={'Now Showing'} category={'now_playing'} />
+      <TitleCard title={'Upcoming'} category={'upcoming'} />
+      {isPopupVisible && <Profile onClose={handleProfileClick} />}
     </div>
   );
 };

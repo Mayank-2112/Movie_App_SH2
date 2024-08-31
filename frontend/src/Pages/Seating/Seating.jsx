@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Seating.css"; // We'll define styles in a separate file
 
 const Seating = () => {
-  const rows = 20;
-  const seatsPerRow = 50;
+  // const rows =20;
+  // const seatsPerRow = 25;
 
   const [selectedSeats, setSelectedSeats] = useState([]);
 
@@ -15,23 +15,22 @@ const Seating = () => {
         : [...prevSelected, seatId]
     );
   };
-
-  const renderSeats = () => {
+  console.log(selectedSeats);
+  const renderSeats = (rowStart, colStart, rows, seatsPerRow) => {
     let seatsGrid = [];
-    for (let i = 0; i < rows; i++) {
+    for (let i = rowStart; i <= rows; i++) {
       let rowSeats = [];
-      for (let j = 0; j < seatsPerRow; j++) {
+      for (let j = colStart; j <= seatsPerRow; j++) {
         const seatId = `${i}-${j}`;
         rowSeats.push(
           <div
             key={seatId}
-            className={`seat ${
-              selectedSeats.includes(seatId) ? "selected" : ""
-            }`}
+            className={`seat ${selectedSeats.includes(seatId) ? "selected" : ""
+              }`}
             onClick={() => toggleSeat(i, j)}
           >
-            {String.fromCharCode(65 + i)}
-            {j + 1}
+            {String.fromCharCode(64 + i)}
+            {j}
           </div>
         );
       }
@@ -46,8 +45,33 @@ const Seating = () => {
 
   return (
     <div className="theater">
-      <div className="screen">Screen</div>
-      <div className="seating">{renderSeats()}</div>
+      <div className="screen-exit">
+        <div className="exit">Exit</div>
+        <div className="screen">Screen</div>
+        <div className="exit">Exit</div>
+      </div>
+        <h1 className="club">Club - ₹180</h1>
+      <div className="seatingSet">
+
+        <div className="col1">
+          <div className="seating">{renderSeats(1, 1, 5, 5)}</div>
+          <div className="seating">{renderSeats(6, 1, 13, 5)}</div>
+          <div className="entry">Entry</div>
+        </div>
+        <div className="col2">
+          <div className="seating">{renderSeats(1, 6, 5, 25)}</div>
+          <h1 className="prime">Prime - ₹250</h1>
+          <div className="seating">{renderSeats(6, 6, 16, 25)}</div>
+          <h1 className="executive">Executive - ₹400</h1>
+          <div className="seating">{renderSeats(17, 6, 18, 25)}</div>
+        </div>
+        <div className="col1">
+          <div className="seating">{renderSeats(1, 26, 5, 30)}</div>
+          <div className="seating">{renderSeats(6, 26, 13, 30)}</div>
+          <div className="entry">Entry</div>
+        </div>
+      </div>
+
       <div className="info">Selected Seats: {selectedSeats.length}</div>
     </div>
   );
