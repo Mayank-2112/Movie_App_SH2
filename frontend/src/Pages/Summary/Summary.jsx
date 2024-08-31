@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
+import Player from '../../components/Player/Player.jsx';
 import './Summary.css';
 
 const Summary = () => {
@@ -53,7 +54,18 @@ const Summary = () => {
           <div className="sd-btn">buttons here</div>
         </div>
       </div>
-      <div className="sd-cast">Cast Cards</div>
+
+      <div className="watch-trailer">
+        <h1>Watch Trailer</h1>
+      </div>
+
+      <div className="sd-trailer">
+        <Player/>
+      </div>
+
+      <div className="sd-cast">
+        Cast Here
+      </div>
       </div>
     </>
   );

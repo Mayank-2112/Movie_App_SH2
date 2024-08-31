@@ -101,11 +101,27 @@
   height: 11%;
 }
 
-.sd-cast {
+.watch-trailer{
   display: flex;
-  height: 40%;
-  width: 90%;
-  margin-top: 5%;
-  margin-left: 5%;
-  z-index: 1; /* Ensure this content is above the background */
+  width: 12%;
+  margin-left: 25.5%;
+  margin-top: 12%;
+}
+
+.sd-trailer {
+  display: flex;
+  height: 600px;
+  width: 55%;
+  margin-top:2%;
+  margin-left: 25%;
+  z-index: 1;
+}
+
+.sd-cast{
+  display: flex;
+  height: 600px;
+  width: 75%;
+  margin-top: 15%;
+  margin-left: 15%;
+  z-index: 1;
 }
