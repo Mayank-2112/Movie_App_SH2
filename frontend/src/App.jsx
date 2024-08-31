@@ -6,7 +6,12 @@ import Home from "./Pages/Home/Home";
 import BookNow from "./Pages/BookNow/BookNow";
 import Summary from "./Pages/Summary/Summary";
 import Seating from "./Pages/Seating/Seating";
+
+import AdminRoutes from "./Pages/Admin/Admin";
+import Dashboard from "./components/AdminComponents/Dashboards";
+
 import Admin from "./Pages/Admin/Admin";
+
 
 function App() {
   const handleSearch = (query) => {
@@ -23,8 +28,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/booknow" element={<BookNow />}></Route>
           <Route path="/seating" element={<Seating />}></Route>
+
+          {/* <AdminRoutes /> */}
+          {/* <Route path="/admin" element={<Dashboard />} /> */}
+          {AdminRoutes()}
+
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/summary/:id" element={<Summary />}></Route>
+
         </Routes>
       </div>
       {/* <Register/> */}

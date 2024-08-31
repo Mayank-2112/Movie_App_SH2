@@ -42,9 +42,12 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
       );
       const data = await res.json();
       if (res.ok) {
-
         console.log(data.cinemas);
+
+        // const filteredTheater = data.cinemas;
+
         //filteredTheater = data.cinemas;
+
         // .filter(theat => theat.city === city)
 
         // console.log(data.cinemas);
@@ -87,9 +90,7 @@ const TheaterDropdown = ({ lat, lng, city, date }) => {
             <option key={idx} value={theater.cinema_id}>
               {theater.cinema_name}, {theater.address}
             </option>
-
           ))}
-
 
       </select>
       {activeTheater && (
