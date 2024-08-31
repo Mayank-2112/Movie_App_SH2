@@ -66,7 +66,7 @@ import {signOutSuccess,signOutFailure} from '../../redux/user/userSlice.js';
 
 // export default Navbar;
 
-function Navbar() {
+function Navbar({onProfileClick}) {
   const dispatch = useDispatch();
   const {currentUser} = useSelector((state) =>state.user);
   console.log(currentUser);
@@ -133,7 +133,7 @@ function Navbar() {
             {currentUser.isAdmin ? (
               <div className="selected-item">Dashboard</div>
             ):(
-              <div className="selected-item">Profile</div>
+              <div className="selected-item" onClick={onProfileClick}>Profile</div>
             )}
             <div className="selected-item" onClick={handleSignOut}>Logout</div>
           </div>

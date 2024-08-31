@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
 import TitleCard from '../../components/Slider/TitleCard';
+import Profile from '../../components/Profile/Profile';
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -114,10 +115,15 @@ const Home = () => {
   // const handleSummary(()=>{
 
   // })
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const handleProfileClick = () => {
+    setPopupVisible(!isPopupVisible);
+  };
 
   return (
     <div className="home">
-      <NavBar />
+      <NavBar onProfileClick={handleProfileClick}/>
       <div className="hero"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -151,6 +157,7 @@ const Home = () => {
       </div>
       <TitleCard title={'Now Showing'} category={'now_playing'} />
       <TitleCard title={'Upcoming'} category={'upcoming'} />
+      {isPopupVisible && <Profile onClose={handleProfileClick} />}
     </div>
   );
 };

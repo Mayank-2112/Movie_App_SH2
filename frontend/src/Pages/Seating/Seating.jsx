@@ -15,8 +15,8 @@ const Seating = () => {
         : [...prevSelected, seatId]
     );
   };
-
-  const renderSeats = (rowStart,colStart,rows,seatsPerRow) => {
+  console.log(selectedSeats);
+  const renderSeats = (rowStart, colStart, rows, seatsPerRow) => {
     let seatsGrid = [];
     for (let i = rowStart; i <= rows; i++) {
       let rowSeats = [];
@@ -25,9 +25,8 @@ const Seating = () => {
         rowSeats.push(
           <div
             key={seatId}
-            className={`seat ${
-              selectedSeats.includes(seatId) ? "selected" : ""
-            }`}
+            className={`seat ${selectedSeats.includes(seatId) ? "selected" : ""
+              }`}
             onClick={() => toggleSeat(i, j)}
           >
             {String.fromCharCode(64 + i)}
@@ -51,18 +50,26 @@ const Seating = () => {
         <div className="screen">Screen</div>
         <div className="exit">Exit</div>
       </div>
-      <h1 className="club">Club - ₹180</h1>
-      <div className="row1">
-        <div className="seating">{renderSeats(1,1,5,5)}</div>
-        <div className="seating">{renderSeats(1,1,5,20)}</div>
-        <div className="seating">{renderSeats(1,1,5,5)}</div>
-      </div>
-      <h1 className="prime">Prime - ₹250</h1>
-      <div className="row2">
-        <div className="seating">{renderSeats(1,1,8,5)}</div>
-        <div className="seating">{renderSeats(1,1,11,20)}</div>
-        <div className="seating">{renderSeats(1,1,8,5)}</div>
+        <h1 className="club">Club - ₹180</h1>
+      <div className="seatingSet">
 
+        <div className="col1">
+          <div className="seating">{renderSeats(1, 1, 5, 5)}</div>
+          <div className="seating">{renderSeats(6, 1, 13, 5)}</div>
+          <div className="entry">Entry</div>
+        </div>
+        <div className="col2">
+          <div className="seating">{renderSeats(1, 6, 5, 25)}</div>
+          <h1 className="prime">Prime - ₹250</h1>
+          <div className="seating">{renderSeats(6, 6, 16, 25)}</div>
+          <h1 className="executive">Executive - ₹400</h1>
+          <div className="seating">{renderSeats(17, 6, 18, 25)}</div>
+        </div>
+        <div className="col1">
+          <div className="seating">{renderSeats(1, 26, 5, 30)}</div>
+          <div className="seating">{renderSeats(6, 26, 13, 30)}</div>
+          <div className="entry">Entry</div>
+        </div>
       </div>
 
       <div className="info">Selected Seats: {selectedSeats.length}</div>
