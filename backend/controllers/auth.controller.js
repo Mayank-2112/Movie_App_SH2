@@ -6,9 +6,9 @@ import jwt from 'jsonwebtoken';
 
 export const signup = async (req,res)=>{
     // request data from browser
-    const {fullname,email,password} = req.body;
+    const {fullname,email,password,city} = req.body;
     
-    if(!fullname || !email || !password  || fullname === '' || email === '' || password === '')
+    if(!fullname || !email || !password || !city || city === ''  || fullname === '' || email === '' || password === '')
     return res.status(400).json({message: 'All fields are required'});
 
     const re = new RegExp(/^\S+@\S+\.\S+$/);
@@ -17,7 +17,7 @@ export const signup = async (req,res)=>{
 
     
     const hashPassword = bcryptjs.hashSync(password,10);
-    const newUser = new User({fullname,email,password:hashPassword});
+    const newUser = new User({fullname,email,city,password:hashPassword});
     try {
         await newUser.save();
         res.json('User added'); 

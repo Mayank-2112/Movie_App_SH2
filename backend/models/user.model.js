@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: false,
     },
-    confirmPassword:{
+    city:{
         type: String,
         required: false,
         unique: false,
