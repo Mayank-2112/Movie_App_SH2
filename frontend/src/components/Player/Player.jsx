@@ -9,9 +9,9 @@ const Player = () => {
 
   return (
     <div className='player'>
-      <FontAwesomeIcon icon={faArrowLeft} className='back_arrow'/>
       <iframe width = '100%' height= '100%' src={'https://www.youtube.com/embed/YQQD67N5pi0'}
-      title  = 'trailer' frameBorder='0' allowFullScreen></iframe>
+      title  = 'trailer' frameBorder='0' allowFullScreen>
+        <FontAwesomeIcon icon={faArrowLeft} className='back_arrow'/></iframe>
     </div>
   )
 }
