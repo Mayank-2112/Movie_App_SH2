@@ -62,3 +62,9 @@
     color: red;
     cursor: pointer;
 }
+.pr-error{
+    color: red;
+}
+.pr-success{
+    color: green;
+}
