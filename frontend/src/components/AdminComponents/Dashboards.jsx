@@ -48,7 +48,7 @@ const Dashboard = () => {
               <Typography variant="h6">Movies</Typography>
               <Button
                 component={Link}
-                to="/movies"
+                to="admin/movies"
                 variant="contained"
                 sx={{ marginTop: "1rem" }}
               >
@@ -61,7 +61,7 @@ const Dashboard = () => {
               <Typography variant="h6">Show Timings</Typography>
               <Button
                 component={Link}
-                to="/show-timings"
+                to="admin/show-timings"
                 variant="contained"
                 sx={{ marginTop: "1rem" }}
               >
@@ -74,7 +74,7 @@ const Dashboard = () => {
               <Typography variant="h6">Reservations</Typography>
               <Button
                 component={Link}
-                to="/reservations"
+                to="admin/reservations"
                 variant="contained"
                 sx={{ marginTop: "1rem" }}
               >
