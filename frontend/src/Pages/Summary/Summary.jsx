@@ -69,7 +69,7 @@ const Summary = () => {
 
     <div className="sd-above">
     <Link to ='/'>
-      <FontAwesomeIcon icon={faArrowLeft} className="sd-back"/>
+      <FontAwesomeIcon icon={faArrowLeft} className="sd-back-button"/>
       </Link>
       <div className="sd-container">
         <div className="sd-poster">
@@ -78,10 +78,12 @@ const Summary = () => {
         <div className="sd-caption">
           <h3 className="sd-title">{mv_details.title}</h3>
           <div className="sd-genre">
-          <FontAwesomeIcon icon={faStar} /><p className="rating">{(Math.floor(mv_details.vote_average * 10)/10).toFixed(1)}</p>
-          {/* <div className="gen">
-            <button className="gen1">Crime</button>
-          </div> */}
+          <FontAwesomeIcon icon={faStar} className="sd-star" /><p className="rating">{(Math.floor(mv_details.vote_average * 10)/10).toFixed(1)}</p>
+          {mv_details.genres.map((genre, indexg) => (
+            <div className="gen" key = {indexg}>
+            <p className="gen1">{genre.name}</p>
+          </div>
+          ))}
           </div>
           <p className="sd-overview">{mv_details.overview}</p>
           <div className="sd-btn">

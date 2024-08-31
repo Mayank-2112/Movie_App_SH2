@@ -19,10 +19,10 @@
   color: #ffffff;
   z-index: 1;
   margin-top: -85%;
-  position: relative;  
+  position: relative;
 }
 
-.sd-back {
+.sd-back-button {
   font-size: 150%;
   margin-left: 1%;
   margin-top: 2%;
@@ -32,12 +32,13 @@
 
 .sd-container {
   display: flex;
-  height: 40%;
-  width: 65%;
+  height: 527px;
+  width: 1050px;
   margin-left: 25%;
   margin-top: 7%;
+  gap: 5.5%;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .sd-poster {
@@ -50,14 +51,14 @@
 
 .sd-poster img {
   /* margin-left: 14.5%; */
-  width: 70%;
+  width: 400px;
   height: 100%;
 }
 
 .sd-caption {
-  display: flex;
   width: 570px;
   height: 523px;
+  display: flex;
   flex-direction: column;
   border-radius: 30px;
   background: rgba(243, 236, 236, 0.096);
@@ -81,9 +82,31 @@
   height: 8%;
 }
 
+.sd-genre .sd-star{
+  display: flex;
+  margin-top: 1%;
+}
+
 .sd-genre .rating {
   margin-left: 2%;
-  margin-top: -0.5%;
+  margin-top: 0.5%;
+}
+
+.sd-genre .gen{
+  display: flex;
+  gap: 20px;
+  margin-left: 3%;
+  width: 70px;
+}
+
+.gen1{
+  color: #FFFF00;
+  background: #ffffff33;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sd-overview {
