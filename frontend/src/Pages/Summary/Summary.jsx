@@ -57,6 +57,8 @@ const Summary = () => {
     getYTKey();
   }, [id]);
 
+  // console.log(mv_genre);
+
   return (
     <>
       <div 

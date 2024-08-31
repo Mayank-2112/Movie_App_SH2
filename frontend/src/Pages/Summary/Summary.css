@@ -1,3 +1,4 @@
+/* Base Styles (Desktop) */
 .sd-home {
   color: #ffffff;
   position: relative;
@@ -23,7 +24,7 @@
 }
 
 .sd-back-button {
-  font-size: 150%;
+  font-size: 1.5em; /* Changed from 150% to relative unit */
   margin-left: 1%;
   margin-top: 2%;
   color: #ffffff;
@@ -46,18 +47,19 @@
   align-items: center;
   height: 100%;
   width: 40%;
-  /* margin-left: 6%; */
 }
 
 .sd-poster img {
-  /* margin-left: 14.5%; */
   width: 400px;
   height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  border-radius: 10px; /* Optional: Adds slight rounding for aesthetics */
 }
 
 .sd-caption {
   width: 570px;
   height: 523px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
@@ -66,53 +68,50 @@
 
 .sd-title {
   width: 80%;
-  /* margin-left: 2%; */
   padding: 6px;
-  font-size: 320%;
+  font-size: 3.2em; /* Changed from 320% to relative unit */
   height: auto;
 }
 
 .sd-genre {
   color: #FFFF00;
   display: flex;
+  align-items: center; /* Vertically centers the content */
   margin-top: 3%;
   padding: 6px;
-  /* margin-left: 2%; */
   width: auto;
-  height: 8%;
+  height: auto; /* Changed from 8% to auto for flexibility */
 }
 
-.sd-genre .sd-star{
+.sd-genre .sd-star {
   display: flex;
   margin-top: 1%;
 }
 
 .sd-genre .rating {
-  margin-left: 2%;
+  margin-left: 0.5em; /* Changed from 2% to relative unit */
   margin-top: 0.5%;
 }
 
-.sd-genre .gen{
+.sd-genre .gen {
   display: flex;
-  gap: 20px;
-  margin-left: 2.4%;
-  width: fit-content;
+  gap: 10px; /* Reduced gap for better spacing on smaller screens */
+  margin-left: 1em; /* Changed from 2.4% to relative unit */
+  flex-wrap: wrap; /* Allows genres to wrap to the next line if necessary */
 }
 
-.gen1{
+.gen1 {
   color: #FFFF00;
-  background: #ffffff33;
+  background: rgba(255, 255, 255, 0.2); /* Changed to rgba for better opacity control */
   border-radius: 10px;
-  width: 100%;
-  padding: 6px;
+  padding: 6px 12px; /* Added horizontal padding for better spacing */
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.9em; /* Adjusted font size for better readability */
 }
 
 .sd-overview {
-  height: auto;
-  /* margin-left: 2%; */
   margin-top: 2%;
   padding: 6px;
   font-family: "Poppins", sans-serif;
@@ -120,34 +119,38 @@
   line-height: 1.6;
   font-weight: 350;
   font-style: normal;
+  display: flex;
 }
 
 .sd-btn {
   display: flex;
   margin-top: 6%;
-  padding: 6px 6px;
+  padding: 6px;
   margin-left: 35%;
-  width: fit-content;
-  height: fit-content;
   gap: 20px;
   margin-bottom: 30px;
 }
 
-.sd-btn .btn-bknow{
+.sd-btn .btn-bknow {
   border: 0;
   outline: 0;
-  padding: 8px 20px;
+  padding: 0.5em 1.25em; /* Changed to relative units */
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 15px;
+  gap: 0.625em; /* 10px */
+  font-size: 0.9375em; /* 15px */
   font-weight: 500;
   background: #FFFF00;
   border-radius: 20px;
   cursor: pointer;
+  transition: background 0.3s ease; /* Added transition for hover effect */
 }
 
-.watch-trailer{
+.sd-btn .btn-bknow:hover {
+  background: #e6e600; /* Slightly darker on hover */
+}
+
+.watch-trailer {
   display: flex;
   width: 12%;
   margin-left: 25.5%;
@@ -158,23 +161,217 @@
   display: flex;
   height: 600px;
   width: 55%;
-  margin-top:2%;
+  margin-top: 2%;
   margin-left: 25%;
   z-index: 1;
 }
 
-.cast-ttle{
+.cast-ttle {
   display: flex;
   width: 12%;
   margin-left: 15.5%;
   margin-top: 10%;
 }
 
-.sd-cast{
+.sd-cast {
   display: flex;
   height: 650px;
   width: 75%;
   margin-top: 2%;
   margin-left: 15%;
   z-index: 1;
+}
+
+/* Tablet Styles (Up to 1024px) */
+@media (max-width: 1024px) {
+  .sd-home {
+    height: 750px; /* Adjusted height for tablets */
+  }
+
+  .sd-above {
+    margin-top: -80%;
+  }
+
+  .sd-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
+    height: auto; /* Allows height to adjust based on content */
+  }
+
+  .sd-poster {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  .sd-poster img {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* Limits image size on tablets */
+  }
+
+  .sd-caption {
+    width: 100%;
+    height: auto;
+    padding: 1em;
+  }
+
+  .sd-title {
+    font-size: 2.5em;
+    width: 100%;
+  }
+
+  .sd-genre {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .sd-genre .gen {
+    gap: 10px;
+    margin-left: 1em;
+  }
+
+  .gen1 {
+    padding: 6px 10px;
+    font-size: 0.85em;
+  }
+
+  .sd-overview {
+    font-size: 1em;
+  }
+
+  .sd-btn {
+    margin-left: 0;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .watch-trailer {
+    width: 20%;
+    margin-left: 10%;
+    margin-top: 8%;
+  }
+
+  .sd-trailer {
+    width: 70%;
+    margin-left: 15%;
+    height: 400px; /* Reduced height for tablets */
+  }
+
+  .cast-ttle {
+    width: 20%;
+    margin-left: 10%;
+    margin-top: 8%;
+  }
+
+  .sd-cast {
+    width: 90%;
+    margin-left: 5%;
+    height: 500px; /* Reduced height for tablets */
+  }
+}
+
+/* Mobile Styles (Up to 768px) */
+@media (max-width: 768px) {
+  .sd-home {
+    height: 289px; /* Further reduced height for mobile */
+  }
+
+  .sd-above {
+    margin-top: -70%;
+  }
+
+  .sd-container {
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 15%;
+    gap: 2em;
+  }
+
+  .sd-poster {
+    width: 80%;
+  }
+
+  .sd-poster img {
+    width: 100%;
+    height: auto;
+    max-width: 250px; /* Further limits image size on mobile */
+  }
+
+  .sd-caption {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .sd-title {
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .sd-genre {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1em;
+  }
+
+  .sd-genre .rating {
+    margin-left: 0.5em;
+  }
+
+  .sd-genre .gen {
+    gap: 10px;
+    margin-left: 0.5em;
+  }
+
+  .gen1 {
+    padding: 6px 8px;
+    font-size: 0.8em;
+  }
+
+  .sd-overview {
+    font-size: 1em;
+    padding: 0 1em;
+    text-align: center;
+  }
+
+  .sd-btn {
+    margin-left: 0;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 1em;
+  }
+
+  .watch-trailer {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .sd-trailer {
+    width: 90%;
+    margin-left: 5%;
+    height: 300px; /* Further reduced height for mobile */
+  }
+
+  .cast-ttle {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    text-align: center;
+  }
+
+  .sd-cast {
+    width: 95%;
+    margin-left: 2.5%;
+    height: 400px; /* Further reduced height for mobile */
+    flex-direction: column;
+    overflow-x: auto; /* Allows horizontal scrolling if necessary */
+  }
 }
