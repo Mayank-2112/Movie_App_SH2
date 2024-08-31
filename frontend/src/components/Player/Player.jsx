@@ -1,17 +1,27 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Player.css';
 
-const Player = () => {
+const Player = ({yt_key}) => {
 
     // const video = 'YQQD67N5pi0';
+    // console.log(yt_key.key);
 
   return (
     <div className='player'>
-      <iframe width = '100%' height= '100%' src={'https://www.youtube.com/embed/YQQD67N5pi0'}
-      title  = 'trailer' frameBorder='0' allowFullScreen>
-        <FontAwesomeIcon icon={faArrowLeft} className='back_arrow'/></iframe>
+      {yt_key ? (
+        <iframe
+          width='100%'
+          height='100%'
+          src={`https://www.youtube.com/embed/${yt_key.key}`}
+          title='trailer'
+          frameBorder='0'
+          allowFullScreen
+        />
+      ) : (
+        <p>Error...</p>
+      )}
     </div>
   )
 }

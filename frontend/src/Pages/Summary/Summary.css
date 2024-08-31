@@ -65,7 +65,8 @@
 
 .sd-title {
   width: 80%;
-  margin-left: 2%;
+  /* margin-left: 2%; */
+  padding: 6px;
   font-size: 320%;
   height: auto;
 }
@@ -74,7 +75,8 @@
   color: #FFFF00;
   display: flex;
   margin-top: 5%;
-  margin-left: 2%;
+  padding: 6px;
+  /* margin-left: 2%; */
   width: auto;
   height: 8%;
 }
@@ -86,7 +88,8 @@
 
 .sd-overview {
   height: auto;
-  margin-left: 2%;
+  /* margin-left: 2%; */
+  padding: 6px;
   font-family: "Poppins", sans-serif;
   font-size: 1.22em;
   line-height: 1.6;
@@ -97,7 +100,7 @@
 .sd-btn {
   display: flex;
   margin-top: 10%;
-  margin-left: 2%;
+  /* margin-left: 2%; */
   height: 11%;
 }
 
@@ -117,11 +120,18 @@
   z-index: 1;
 }
 
+.cast-ttle{
+  display: flex;
+  width: 12%;
+  margin-left: 15.5%;
+  margin-top: 10%;
+}
+
 .sd-cast{
   display: flex;
-  height: 600px;
+  height: 650px;
   width: 75%;
-  margin-top: 15%;
+  margin-top: 2%;
   margin-left: 15%;
   z-index: 1;
 }

@@ -1,0 +1,42 @@
+.cast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .cast-card {
+    width: 250px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cast-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .cast-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cast-name-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-shadow: 5px 5px 8px #161616;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .cast-name {
+    font-size: 1.5em;
+    font-weight: bold;
+  }

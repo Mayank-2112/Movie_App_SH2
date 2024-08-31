@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import Player from '../../components/Player/Player.jsx';
+import Cast from '../../components/Cast/Cast.jsx';
 import './Summary.css';
 
 const Summary = () => {
   const { id } = useParams();
   const [mv_details, setMv_details] = useState([]);
+  const [ytkey, setYtkey] = useState([]);
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -24,7 +27,37 @@ const Summary = () => {
     getMovies();
   }, [id]);
 
-  //console.log(mv_details);
+  useEffect(() => {
+    const getCast = async () => {
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${import.meta.env.VITE_TMDB_API_KEY}`);
+        const data = await response.json();
+        setCast(data.cast);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    getCast();
+  }, [id]);
+
+
+  useEffect(() => {
+    const getYTKey = async () => {
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${import.meta.env.VITE_TMDB_API_KEY}`);
+        const data1 = await response.json();
+        setYtkey(data1.results);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    getYTKey();
+  }, [id]);
+
+  // console.log(ytkey[0]);
+  console.log(cast);
   
   return (
     <>
@@ -60,11 +93,14 @@ const Summary = () => {
       </div>
 
       <div className="sd-trailer">
-        <Player/>
+        <Player yt_key={ytkey[0]}/>
       </div>
 
+      <div className="cast-ttle">
+        <h1>Cast</h1>
+      </div>
       <div className="sd-cast">
-        Cast Here
+        <Cast castList = {cast}/>
       </div>
       </div>
     </>
