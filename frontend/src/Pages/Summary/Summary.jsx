@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faStar, faPlay } from '@fortawesome/free-solid-svg-icons';
 import Player from '../../components/Player/Player.jsx';
 import Cast from '../../components/Cast/Cast.jsx';
 import './Summary.css';
@@ -57,7 +57,7 @@ const Summary = () => {
   }, [id]);
 
   // console.log(ytkey[0]);
-  console.log(cast);
+  console.log(mv_details);
   
   return (
     <>
@@ -84,7 +84,11 @@ const Summary = () => {
           </div> */}
           </div>
           <p className="sd-overview">{mv_details.overview}</p>
-          <div className="sd-btn">buttons here</div>
+          <div className="sd-btn">
+            <Link to='/booknow'>
+          <button className="btn-bknow"><FontAwesomeIcon icon={faPlay} />Book Now</button>
+          </Link>
+          </div>
         </div>
       </div>
 
