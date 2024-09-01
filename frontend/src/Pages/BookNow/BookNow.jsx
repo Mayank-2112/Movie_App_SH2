@@ -115,7 +115,7 @@ const BookNow = () => {
                 ))}
               </div>
             </div>
-            <div className="col1">
+            <div className="col2">
               <h2>Select Date</h2>
               <div className="dateBtn">
                 {weekDates && weekDates.map((item, index) => (

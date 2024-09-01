@@ -69,7 +69,7 @@ import {signOutSuccess,signOutFailure} from '../../redux/user/userSlice.js';
 function Navbar({onProfileClick}) {
   const dispatch = useDispatch();
   const {currentUser} = useSelector((state) =>state.user);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const handleDropdown = () => {
     const selectElement = document.querySelector(".select-item");

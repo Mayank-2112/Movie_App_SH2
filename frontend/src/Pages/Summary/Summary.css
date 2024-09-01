@@ -148,6 +148,8 @@
 
 .sd-btn .btn-bknow:hover {
   background: #e6e600; /* Slightly darker on hover */
+  transform: scale(1.1);
+
 }
 
 .watch-trailer {

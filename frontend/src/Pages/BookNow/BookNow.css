@@ -97,11 +97,21 @@ font-size: 1.5em; /* Changed from 150% to relative unit */
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .col1{
     flex: 1;
     gap: 10px;
+    border-bottom: 2px solid rgba(83, 81, 81, 0.479);
 }
+
+.col2{
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  margin-top: 1%;
+}
+
 .row2{
     margin-left: 5%;
     margin-top: 5%;
