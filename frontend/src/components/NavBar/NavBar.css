@@ -203,6 +203,7 @@
     justify-content: center;
     font-size: 15px;
     margin-left: 2%;
+    margin-top: 8%;
     height: 40px;
     width: 90px;
   }
@@ -252,6 +253,7 @@
   .site-title {
     font-size: 22px;
   }
+  
 }
 
 @media (max-width: 480px) {
