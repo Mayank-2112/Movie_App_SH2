@@ -56,7 +56,7 @@ const TheaterDropdown = ({ lat, lng, city, Activedate, id }) => {
         {
           method: "GET",
           headers: {
-            client: "MOVI_231",
+            client: "DUMM_1",
             "x-api-key": import.meta.env.VITE_X_API_KEY,
             authorization: import.meta.env.VITE_AUTHORIZATION,
             territory: "IN",
