@@ -83,7 +83,7 @@
 .hero-btns .btn:hover {
     /* background: rgba(255, 255, 255, 0.301); */
     background: #e6e600f1;
-    transform: scale(1.1);
+    transform: scale(1.03);
 }
 
 .hero-btns .btn.dark-btn {

@@ -33,7 +33,7 @@ const TitleCard = ({title, category}) => {
         const data = await response.json();
         // setMovieList(data.results.slice(0, 10)); // Use the first 3 movies
         setApiData(data.results);
-        console.log(data.results);
+        // console.log(data.results);
       } catch (error) {
         console.error('Error fetching movies:', error);
       }

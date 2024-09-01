@@ -19,14 +19,13 @@
     display: none;
 }
 
-
-
 .card-list img {
     width: 240px;
     border-radius: 10px;
     cursor: pointer;
     z-index: 1;
 }
+
 .cardX:hover{
     transform: scale(1.1);
 }

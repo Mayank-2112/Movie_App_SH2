@@ -94,7 +94,7 @@ const TheaterDropdown = ({ lat, lng, city, Activedate, id }) => {
         <div className="theat-show" key={idx}>
           <div className="th-name">
             <h3>{theater.cinema_name}</h3>
-            <h3>{theater.address}</h3>
+            <p className="th-address">- {theater.address}</p>
           </div>
           <div className="th-show">
             {showTimings.length > 0 &&

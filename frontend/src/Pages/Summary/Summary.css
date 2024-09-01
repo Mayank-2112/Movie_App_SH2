@@ -26,9 +26,10 @@
 .sd-back-button {
   font-size: 1.5em; /* Changed from 150% to relative unit */
   margin-left: 1%;
-  margin-top: 2%;
   color: #ffffff;
   cursor: pointer;
+  position: fixed;
+  margin-top: -5%;
 }
 
 .sd-container {
@@ -148,7 +149,7 @@
 
 .sd-btn .btn-bknow:hover {
   background: #e6e600; /* Slightly darker on hover */
-  transform: scale(1.1);
+  transform: scale(1.03);
 
 }
 

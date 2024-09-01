@@ -2,6 +2,10 @@ p, .BookNow{
     color: white;
 }
 
+.bn-home{
+  height: 1500px;
+}
+
 .dateBtn{
     display: flex;
     justify-content: space-around;
@@ -63,9 +67,10 @@ form input{
 .bn-back-button{
 font-size: 1.5em; /* Changed from 150% to relative unit */
   margin-left: 1%;
-  margin-top: 2%;
+  margin-top: -5%;
   color: #ffffff;
   cursor: pointer;
+  position: fixed;
 }
 .bn-container{
     display: flex;

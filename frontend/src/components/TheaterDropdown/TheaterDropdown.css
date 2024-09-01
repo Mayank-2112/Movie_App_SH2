@@ -9,6 +9,13 @@
     margin-top: 5%;
     border-radius: 2px;
     border-bottom: 2px solid rgba(250, 234, 7, 0.582);
+    flex-direction: column;
+}
+
+.th-name .th-address{
+    display: flex;
+    margin-left: 5%;
+    font-weight: 400;
 }
 
 .th-show{
