@@ -88,7 +88,7 @@ const Summary = () => {
             </div>
             <p className="sd-overview">{mv_details.overview}</p>
             <div className="sd-btn">
-              <Link to='/booknow'>
+              <Link to={`/booknow/${mv_details.id}`}>
                 <button className="btn-bknow"><FontAwesomeIcon icon={faPlay} />Book Now</button>
               </Link>
             </div>

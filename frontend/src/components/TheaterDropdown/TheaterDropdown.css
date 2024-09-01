@@ -1,14 +1,34 @@
 .theaterdropdown{
     display: flex;
-    justify-content: center;
-    margin-top: 100px;
-
+    flex-direction: column;
+    margin-top: 4%;
+}
+.th-name{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
 }
 
-
-select{
-    width: 70%;
-    padding: 10px;
-    background-color: rgba(94, 92, 92, 0.947);
-    border-bottom: solid 2px #f1ee39;
+.th-show{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.th-time{
+    color: #FFFF00;
+    background: rgba(255, 255, 255, 0.2); /* Changed to rgba for better opacity control */
+    border-radius: 10px;
+    padding: 6px 12px; /* Added horizontal padding for better spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em; 
+    border: none;
+    cursor: pointer;
+}
+.theat-show{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }

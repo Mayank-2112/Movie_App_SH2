@@ -26,8 +26,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/booknow" element={<BookNow />}></Route>
-          <Route path="/seating" element={<Seating />}></Route>
+          <Route path="/booknow/:id" element={<BookNow />}></Route>
+          <Route path="/seating/:id" element={<Seating />}></Route>
 
           {/* <AdminRoutes /> */}
           {/* <Route path="/admin" element={<Dashboard />} /> */}
