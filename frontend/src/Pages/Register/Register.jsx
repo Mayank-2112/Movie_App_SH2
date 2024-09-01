@@ -5,16 +5,21 @@ import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
 import {signInStart, signInSuccess, signInFailure} from '../../redux/user/userSlice.js'
 import { app }  from '../../firebase';
 import {useDispatch} from 'react-redux';
+import opencage from 'opencage-api-client';
 
 function Register() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
+  const [theater, setTheater] = useState([]);
   const [toggle, setToggle]= useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const auth = getAuth(app);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [location, setLocation] = useState({
+    lat: "",
+    lng: "",
+  });
   const images = [
     "Carousel/DandW.jpg",
     "Carousel/DM4.jpeg",
@@ -22,6 +27,8 @@ function Register() {
     "Carousel/FuriosaMadMAx.jpg",
     "Carousel/KPA.jpeg",
   ];
+
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -79,12 +86,98 @@ function Register() {
         setError(data.message);
       }
       if (res.ok) {
+        getGeoLocation();
         navigate("/login");
       }
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const getGeoLocation = async () => {
+    try {
+      const data = await opencage.geocode({
+        q: formData.city,
+        key: import.meta.env.VITE_OPENCAGE_API_KEY,
+      });
+      if (data.status.code === 200 && data.results.length > 0) {
+        const place = data.results[0];
+        // setLocation({
+        //   lat: place.geometry.lat,
+        //   lng: place.geometry.lng,
+        // });
+        getTheaters(place.geometry.lat, place.geometry.lng);
+      } else {
+        console.log("Status", data.status.message);
+        console.log("total_results", data.total_results);
+      }
+    } catch (error) {
+      console.log("Error", error.message);
+      if (error.status.code === 402) {
+        console.log("hit free trial daily limit");
+        console.log("become a customer: https://opencagedata.com/pricing");
+      }
+    }
+  };
+  const getTheaters = async (lat, lng) => {
+    try {
+      const res = await fetch(
+        `https://api-gate2.movieglu.com/cinemasNearby/?n=30`,
+        {
+          method: "GET",
+          headers: {
+            client: "MOVI_231",
+            "x-api-key": import.meta.env.VITE_X_API_KEY,
+            authorization: import.meta.env.VITE_AUTHORIZATION,
+            territory: "IN",
+            "api-version": "v200",
+            geolocation: `${lat};${lng}`,
+            "device-datetime": new Date().toISOString(),
+          },
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        const filteredTheater = data.cinemas.filter(
+          (theat) => theat.city === city
+        );
+        const theatersToSave = filteredTheater.map((theat) => ({
+          theaterId: theat.cinema_id, // Example of a parameter to save
+          theaterName: theat.cinema_name, // Another example
+          theaterAddress: theat.address, // Another example
+          theaterCity: theat.city, // Another example
+        }));
+        setTheater(theatersToSave);
+        await saveTheaters(theatersToSave);
+      } else {
+        console.error("HTTP error:", res.status, res.statusText);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  const saveTheaters = async(theaters)=>{
+    try {
+      const res = await fetch("/backend/theater/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(theaters),
+      });
+      if (res.ok) {
+        console.log("Theaters saved successfully!");
+      } else {
+        console.error("Failed to save theaters:", res.status, res.statusText);
+      }
+    } catch (error) {
+      console.error("Error saving theaters:", error.message);
+    }
+  };
+  
+  
+    
+  
   return (
     <div className="video-container">
       <video autoPlay muted loop className="background-video">
