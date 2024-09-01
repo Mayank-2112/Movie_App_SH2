@@ -4,6 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    letter-spacing: 1px;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     display: flex;
@@ -11,7 +12,11 @@
     align-items: center;
     z-index: 1000;
     color: white;
+    font-family: "Poppins", system-ui;
+    font-weight: 600;
+    font-style: normal;
 }
+
 .close{
     font-size: 30px;
     cursor: pointer;
@@ -20,6 +25,7 @@
     top: 10px;
     right: 10px;
 }
+
 .pr-main{
     width: 40%;
     display: flex;
@@ -42,15 +48,69 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 3%;
+    border-radius: 25px;
+    background: rgba(82, 80, 80, 0.24);
     gap: 30px;
-    width: 100%;
+    width: 90%;
+    /* border: 1px solid #f1ee39; */
 }
+
+.new-div{
+    height: 360px;
+    width: 500px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6%;
+    gap: 25px;
+}
+
+#fullname{
+    display: flex;
+    letter-spacing: 1px;
+    background: #c2c2c011;
+    border: none;
+    border-radius: 10px;
+}
+
+#email{
+    display: flex;
+    letter-spacing: 1px;
+    background: #c2c2c011;
+    border: none;
+    border-radius: 10px;
+}
+
+#city{
+    display: flex;
+    letter-spacing: 1px;
+    background: #c2c2c011;
+    border: none;
+    border-radius: 10px;
+}
+
+#password{
+    display: flex;
+    background: #c2c2c011;
+    border: none;
+    border-radius: 10px;
+}
+
 .pr-main form .btn{
-    width: 80%;
+    padding: 10px;
+    width: fit-content;
     height: 40px;
+    border-radius: 15px;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f1ee39;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .func{
@@ -58,13 +118,17 @@
     justify-content: space-between;
     width: 80%;
 }
+
 .func p{
     color: red;
+    letter-spacing: 0px;
     cursor: pointer;
 }
+
 .pr-error{
     color: red;
 }
+
 .pr-success{
     color: green;
 }

@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   margin-left: -100px;
-  gap: 200px;
+  gap: 170px;
 }
 
 .site-title{
@@ -34,6 +34,7 @@
 }
 
 .navbar-left ul{
+  width: fit-content;
   display: flex;
   list-style: none;
   font-size: 17px;
@@ -43,7 +44,8 @@
 .navbar-left ul li{
   cursor: pointer;
   font-weight: 400;
-  /* width: 90px; */
+  width: fit-content;
+  /* border: 2px solid green; */
 }
 
 .navbar-left ul li:hover{
@@ -106,37 +108,80 @@
     cursor: pointer;
     margin-left: 100%;
 }
+
+.selector {
+  position: relative;
+  display: inline-block;
+  margin-left: 2%;
+}
+
 .selector .select img{
   width: 45px;
   height: 45px;
   border-radius: 50%;
   cursor: pointer;
-  border: solid 2px #FFFF00;
+  border: solid 1px #FFFF00;
 
-}
-.selector {
-  position: relative;
-  display: inline-block;
 }
 
 .select-item {
   display: none;
   position: absolute;
-  border-radius: 20px;
+  width: 125px;
+  height: 52px;
+  margin-top: 30%;
+  margin-left: -80%;
+  /* border-radius: 20px; */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   z-index: 1;
+  font-family: "Poppins", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  /* border: 2px solid green; */
 }
 
+
 .selected-item {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 15px;
   cursor: pointer;
   font-size: 15px;
   color: #FFFF00;
-  background: black;
+  border-radius: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.144);
+  background: rgba(0, 0, 0, 0.89);
+  z-index: 20;
+  position: relative;
+  overflow: hidden;
+}
+
+.selected-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFF00;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+
+.selected-item:hover::before {
+  transform: scaleX(1);
 }
 
 .selected-item:hover {
-  background-color: #191919;
-  color: #FFFF00;
-  border: solid 2px #FFFF00;
+  color: black; /* Change text color when hover */
+  border-bottom: none;
 }
+
+/* .selected-item:hover {
+  color: black;
+  border-color:#FFFF00;
+} */
+

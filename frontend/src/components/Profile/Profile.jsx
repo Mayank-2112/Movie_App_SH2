@@ -95,14 +95,16 @@ const Profile = ({ onClose }) => {
     <div className='profile'>
       <FontAwesomeIcon icon={faCircleXmark} onClick={onClose} className='close' />
       <div className="pr-main">
-        <h1>User Profile</h1>
+        <h1>Profile</h1>
         <img src={currentUser.profilePicture} alt={currentUser.fullname} className='pr-img' />
         <form onSubmit={handleSubmit}>
+          <div className="new-div">
           <input type="text" placeholder='FullName' id='fullname' onChange={handleChange} value={formData.fullname} />
           <input type="email" placeholder='Email' id='email' onChange={handleChange} value={formData.email} />
           <input type="text" placeholder='City' id='city' onChange={handleChange} value={formData.city} />
           <input type="password" placeholder='Password' id='password' onChange={handleChange} value={formData.password} />
           <button className='btn' type='submit'>Update Profile</button>
+          </div>
         </form>
         <div className="func">
           <p className='delete'onClick={handleDeleteUser}>Delete Account</p>

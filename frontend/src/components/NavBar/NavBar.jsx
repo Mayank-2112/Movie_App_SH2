@@ -131,7 +131,7 @@ function Navbar({onProfileClick}) {
             <img src={currentUser.profilePicture} alt="user" /></div>
           <div className="select-item">
             {currentUser.isAdmin ? (
-              <div className="selected-item">Dashboard</div>
+              <div className="selected-item trans">Dashboard</div>
             ):(
               <div className="selected-item" onClick={onProfileClick}>Profile</div>
             )}
