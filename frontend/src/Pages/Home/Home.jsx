@@ -121,10 +121,11 @@ const Home = () => {
     setPopupVisible(!isPopupVisible);
   };
 
+
   return (
     <div className="home">
       <NavBar onProfileClick={handleProfileClick}/>
-      <div className="hero"
+      <div id='home-scroll-id' className="hero"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -157,8 +158,12 @@ const Home = () => {
         </div>
         
       </div>
-      <TitleCard title={'Now Showing'} category={'now_playing'} />
-      <TitleCard title={'Upcoming'} category={'upcoming'} />
+      <div id='now-showing1'>
+        <TitleCard title={'Now Showing'} category={'now_playing'} />
+      </div>
+      <div id='upcoming1'>
+        <TitleCard title={'Upcoming'} category={'upcoming'} />
+      </div>
       {isPopupVisible && <Profile onClose={handleProfileClick} />}
     </div>
   );

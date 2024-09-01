@@ -56,13 +56,20 @@ function Navbar({ onProfileClick, result }) {
     }
   };
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({behavior:'smooth'});
+    }
+  };
+
   return (
     <div className={`navbar ${scrollNav ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-left">
-        <Link to="/" className="site-title">FlixCribe</Link>
+        <p className="site-title" onClick={() => scrollToSection('home-scroll-id')}>FlixCribe</p>
         <ul>
-          <li>Now Showing</li>
-          <li>Upcoming</li>
+          <li onClick={() => scrollToSection('now-showing1')}>Now Showing</li>
+          <li onClick={() => scrollToSection('upcoming1')}>Upcoming</li>
         </ul>
       </div>
       <div className="navbar-right">
