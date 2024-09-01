@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
 
-.navbar{
+.navbar {
   width: 100%;
   padding: 20px 6%;
   display: flex;
@@ -13,14 +13,14 @@
   z-index: 1;
 }
 
-.navbar-left{
+.navbar-left {
   display: flex;
   align-items: center;
   margin-left: -100px;
   gap: 170px;
 }
 
-.site-title{
+.site-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 30px;
@@ -33,7 +33,7 @@
   width: 90px;
 }
 
-.navbar-left ul{
+.navbar-left ul {
   width: fit-content;
   display: flex;
   list-style: none;
@@ -45,14 +45,13 @@
   cursor: pointer;
   font-weight: 400;
   width: fit-content;
-  /* border: 2px solid green; */
 }
 
-.navbar-left ul li:hover{
+.navbar-left ul li:hover {
   color: #FFFF00;
 }
 
-.navbar-right{
+.navbar-right {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -73,7 +72,7 @@
   position: relative;
 }
 
-.dropdown{
+/* .dropdown{
   position: absolute;
   top: 100%;
   right: 0;
@@ -93,7 +92,8 @@
 
 .navbar-profile:hover .dropdown {
   display: block;
-}
+/* } */
+
 .Btn-login{
     border: 0;
     outline: 0;
@@ -107,7 +107,7 @@
     border-radius: 20px;
     cursor: pointer;
     margin-left: 100%;
-}
+} 
 
 .selector {
   position: relative;
@@ -115,13 +115,12 @@
   margin-left: 2%;
 }
 
-.selector .select img{
+.selector .select img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   cursor: pointer;
   border: solid 1px #FFFF00;
-
 }
 
 .select-item {
@@ -129,17 +128,12 @@
   position: absolute;
   width: 125px;
   height: 52px;
-  margin-top: 30%;
-  margin-left: -80%;
-  /* border-radius: 20px; */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   z-index: 1;
   font-family: "Poppins", system-ui;
   font-weight: 400;
   font-style: normal;
-  /* border: 2px solid green; */
 }
-
 
 .selected-item {
   display: flex;
@@ -176,12 +170,127 @@
 }
 
 .selected-item:hover {
-  color: black; /* Change text color when hover */
+  color: black;
   border-bottom: none;
 }
 
-/* .selected-item:hover {
-  color: black;
-  border-color:#FFFF00;
-} */
+/* Media Queries */
+@media (max-width: 1024px) {
+  .navbar-left {
+    gap: 50px;
+    padding: 10px;
+  }
 
+  .site-title{
+    font-size: 20px;
+    margin-left: 8%;
+  }
+
+  .navbar-left ul {
+    gap: 60px;
+    font-size: 15px;
+    width: 450px;
+    font-size: 20px;
+  }
+
+  .navbar-left ul li{
+    width: fit-content;
+  }
+
+  .Btn-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin-left: 2%;
+    height: 40px;
+    width: 90px;
+  }
+
+  .navbar-right {
+    margin-left: auto;
+  }
+
+  .site-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 4%;
+  }
+
+  .navbar-left {
+    align-items: flex-start;
+    gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 20px;
+    margin-left: 15%;
+  }
+
+  .navbar-left ul {
+    gap: 10px;
+    font-size: 14px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-right {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .site-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 3%;
+  }
+
+  .site-title {
+    font-size: 20px;
+    padding: 2%;
+    margin-left: 180%;
+  }
+
+  .navbar-left ul {
+    /* gap: 5px;
+    font-size: 13px; */
+    display: none;
+  }
+
+  .Btn-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-left: 2%;
+    height: 30px;
+    width: 70px;
+  }
+
+  .selector .select img {
+    width: 35px;
+    height: 35px;
+    margin-top: 20%;
+  }
+
+  .select-item{
+    display: none;
+    position: absolute;
+    width: 80px;
+    margin-left: -112%;
+  }
+}

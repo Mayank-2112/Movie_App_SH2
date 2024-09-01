@@ -100,16 +100,21 @@
     }
 
     .hero-btns {
-        width: 100%;
+        width: 300px;
         gap: 10px;
-        flex-direction: column;
+        /* flex-direction: column; */
     }
 
-    .hero-btns .btn {
-        width: 100%;
+    /* .hero-btns .btn {
+        width: 50%;
         text-align: center;
         padding: 12px;
-    }
+    } */
+    
+    /* .hero-btns .btn.dark-btn{
+        width: 110%;
+        height: 100%;
+    } */
 }
 
 @media (max-width: 480px) {
