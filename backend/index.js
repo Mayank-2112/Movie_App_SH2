@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
-import theaterRoutes from './routes/theater.route.js';
 import path from 'path';
 
 dotenv.config();
@@ -25,7 +24,6 @@ app.listen(3000, ()=>{
 
 app.use('/backend/auth',authRoutes);
 app.use('/backend/user',userRoutes);
-app.use('/backend/theater',theaterRoutes);
 
 app.use(express.static(path.join(__dirname,'/frontend/dist')));
 app.get('*',(req,res)=>{
