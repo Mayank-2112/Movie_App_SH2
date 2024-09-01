@@ -106,7 +106,7 @@ const Home = () => {
     }
   }, [currentIndex, isTransitioning, movieList]);
 
-  console.log(movieList);
+  // console.log(movieList);
 
   const currentSlide = movieList[(currentIndex + movieList.length) % movieList.length];
 

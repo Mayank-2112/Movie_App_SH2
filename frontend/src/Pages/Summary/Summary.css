@@ -300,6 +300,7 @@
     width: 100%;
     height: auto;
     max-width: 250px; /* Further limits image size on mobile */
+    margin-left: 10%;
   }
 
   .sd-caption {

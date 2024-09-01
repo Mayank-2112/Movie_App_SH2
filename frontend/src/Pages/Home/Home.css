@@ -1,56 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
- /* body {
-    overflow: hidden;
-} */
-
-body::-webkit-scrollbar {
-    display: none;
-}
-
-body{
-    overflow-y: scroll;
-}
-
-.hero{
-    /* width: 10px;
-    height: 10px;
-    margin: 15%;
-    padding: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    padding: 0;
-    border: 0;
-    outline: 0; */
+/* General styles (Already given) */
+.hero {
     position: relative;
     width: 100%;
     height: 800px;
     overflow: hidden;
-    
 }
 
 .carousel-slides {
     display: flex;
     height: 100%;
-  }
-  
-  /* Individual slide styling */
-  .carousel-slide {
+}
+
+.carousel-slide {
     min-width: 100%;
     height: 100%;
-  }
-  
+}
 
-.banner-img{
+.banner-img {
     width: 100%;
     max-height: 900px;
     height: 100%;
@@ -58,40 +24,31 @@ body{
     -webkit-mask-image: linear-gradient(to right, transparent, black 75%), linear-gradient(to top, transparent, black 75%);
     mask-composite: intersect;
     -webkit-mask-composite: source-in;
-    /* margin-left: 300px; */
-    object-fit: cover;    
+    object-fit: cover;
 }
 
-.hero-caption{
+.hero-caption {
     width: 60%;
-    height: 50%;
-    /* padding-left: 6%; */
+    height: auto;
     bottom: 0;
-    /* border: 2px solid green; */
     position: absolute;
     display: flex;
     flex-direction: column;
     margin-left: 5%;
     margin-bottom: 5%;
     gap: 30px;
-    
 }
 
-.caption-mvname{
-    width: 500px;
-    height: auto;
+.caption-mvname {
     font-size: 50px;
     line-height: 60px;
     color: #ffff;
 }
 
-.hero-caption p{
-
+.hero-caption p {
     width: 600px;
     max-width: 100%;
-    margin-bottom: 20px;
     font-size: 17px;
-    margin-bottom: 10px;
     color: rgb(252, 252, 252);
     line-height: 22px;
     text-align: justify;
@@ -99,25 +56,15 @@ body{
     font-size: .95em;
     line-height: 1.6;
     font-weight: 300;
-    font-style: normal;
 }
 
-.hero-btns{
-    width: 300px;
-    height: 40px;
+.hero-btns {
     display: flex;
     gap: 20px;
-    /* width: 500px; */
     margin-bottom: 30px;
 }
 
-.hero-btns .btn FontAwesomeIcon{
-    width: 25px;
-}
-
-.hero-btns .btn{
-    border: 0;
-    outline: 0;
+.hero-btns .btn {
     padding: 8px 20px;
     display: inline-flex;
     align-items: center;
@@ -127,18 +74,73 @@ body{
     background: #FFFF00;
     border-radius: 20px;
     cursor: pointer;
+    outline: 0;
+    border: 0px;
 }
 
-.hero-btns .btn.dark-btn{
+.hero-btns .btn.dark-btn {
     color: #fff;
     background: #6d6d6eb3;
-
 }
 
-.hero-btns .btn:hover{
-    background: #fff;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        height: 600px;
+    }
+
+    .caption-mvname {
+        font-size: 35px;
+        line-height: 45px;
+    }
+
+    .hero-caption p {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .hero-btns {
+        width: 100%;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
 }
 
-.hero-btns .btn.dark-btn:hover{
-    background: #6d6d6e66;
+@media (max-width: 480px) {
+    .hero {
+        height: 500px;
+    }
+
+    .caption-mvname {
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    .hero-caption {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .hero-caption p {
+        font-size: 12px;
+    }
+
+    .hero-btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+    }
+
+    .hero-btns .btn {
+        font-size: 14px;
+        padding: 10px;
+        width: fit-content;
+    }
 }
