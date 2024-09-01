@@ -71,7 +71,7 @@ const Seating = () => {
         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mv_details.backdrop_path})` }}>
       </div>
       <div className="se-above">
-        <Link to={`/booking/${id}`}>
+        <Link to={`/booknow/${id}`}>
           <FontAwesomeIcon icon={faArrowLeft} className="se-back-button" />
         </Link>
         <div className="se-container">
