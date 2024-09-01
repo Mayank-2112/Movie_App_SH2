@@ -16,8 +16,8 @@ To run this project:
 ```
 - Hosted on:
 
-```
-flixcribe.onrender.com
+```https
+https://flixcribe.onrender.com
 ```
 
 
