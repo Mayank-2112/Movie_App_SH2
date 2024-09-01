@@ -1,6 +1,6 @@
 .display {
     position: relative;
-    width: 300px;
+    width: 150px;
   }
   
   #passw {
@@ -34,5 +34,51 @@
   
   #passw:focus {
     border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (max-width: 1024px) {
+    .display {
+      position: absolute;
+      margin-left: -15%;
+      width: 100px;
+      height: 40px;
+    }
+    #passw{
+      font-size: 11px;
+    }
+    .display svg {
+      font-size: 15px;
+      margin-top: -2%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .display{
+      margin-top: 1.3%;
+    }
+    
+    #passw{
+      font-size: 11px;
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .display {
+      position: absolute;
+      margin-left: 18%;
+      margin-top: 3%;
+      width: 98px;
+      height: 30px;
+    }
+    #passw{
+      font-size: 11px;
+      height: 100%;
+    }
+
+    .display svg {
+      font-size: 11px;
+      margin-top: -2%;
+    }
   }
   
