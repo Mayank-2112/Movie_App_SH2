@@ -94,6 +94,7 @@
 
 .info {
   margin-top: 20px;
+  font-size: 20px;
 }
 
 .se-home{
@@ -139,4 +140,20 @@
   z-index: 1;
   border-radius: 50px;
   padding: 20px;
+}
+.checkout{
+  width: 40%;
+  height: 50px;
+  margin: 0 5px;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFF00;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 400;
+  color: black;
+  border: none;
+  margin-top: 2%;
 }

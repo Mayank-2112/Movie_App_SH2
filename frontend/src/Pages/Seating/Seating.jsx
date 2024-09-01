@@ -13,7 +13,6 @@ const Seating = () => {
   const [mv_details, setMv_details] = useState([]);
   const [mv_genre, setMv_genre] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
-
   const toggleSeat = (row, seat) => {
     const seatId = `${row}-${seat}`;
     setSelectedSeats((prevSelected) =>
@@ -65,6 +64,7 @@ const Seating = () => {
     getMovies();
   }, [id]);
 
+  
   return (
     <>
       <div className="se-home"
@@ -103,7 +103,7 @@ const Seating = () => {
           </div>
 
           <div className="info">Selected Seats: {selectedSeats.length}</div>
-
+          <button className="checkout" onClick={makePayment}>Proceed for Payment</button>
         </div>
 
       </div>
