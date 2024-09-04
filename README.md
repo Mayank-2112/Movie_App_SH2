@@ -14,6 +14,11 @@ To run this project:
   npm i
   npm run dev
 ```
+- Hosted on:
+
+```https
+https://flixcribe.onrender.com
+```
 
 
 
