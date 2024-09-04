@@ -103,7 +103,7 @@ const Seating = () => {
           </div>
 
           <div className="info">Selected Seats: {selectedSeats.length}</div>
-          <button className="checkout" onClick={makePayment}>Proceed for Payment</button>
+          <button className="checkout">Proceed for Payment</button>
         </div>
 
       </div>
